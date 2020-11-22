@@ -9,6 +9,7 @@ import com.mojang.minecraft.renderer.Frustum;
 import com.mojang.minecraft.phys.AABB;
 import com.mojang.minecraft.level.tile.Tile;
 import com.mojang.minecraft.gui.PauseScreen;
+import com.mojang.minecraft.gui.MenuScreen;
 import com.mojang.minecraft.level.Chunk;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -160,6 +161,41 @@ public class Minecraft implements Runnable, LevelLoaderListener
         final IntBuffer imgData = BufferUtils.createIntBuffer(256);
         imgData.clear().limit(256);
         GL11.glViewport(0, 0, this.width, this.height);
+        this.setScreen(new MenuScreen());
+        /*        this.level = new Level();
+        boolean success = false;
+        try {
+            success = this.levelIo.load(this.level, new FileInputStream(new File("level.dat")));
+            if (!success) {
+                success = this.levelIo.loadLegacy(this.level, new FileInputStream(new File("level.dat")));
+            }
+        }
+        catch (Exception e3) {
+            success = false;
+        }
+        if (!success) {
+            this.levelGen.generateLevel(this.level, this.user.name, 256, 256, 64);
+        }
+        this.levelRenderer = new LevelRenderer(this.level, this.textures);
+        this.player = new Player(this.level);
+        this.particleEngine = new ParticleEngine(this.level, this.textures);
+        for (int i = 0; i < 10; ++i) {
+            final Zombie zombie = new Zombie(this.level, this.textures, 128.0f, 0.0f, 128.0f);
+            zombie.resetPos();
+            this.entities.add(zombie);
+        }
+        if (this.appletMode) {
+            try {
+                this.emptyCursor = new Cursor(16, 16, 0, 0, 1, imgData, (IntBuffer)null);
+            }
+            catch (LWJGLException e2) {
+                e2.printStackTrace();
+            }
+        }
+        this.checkGlError("Post startup");*/
+    }
+    
+    public void startGame() {
         this.level = new Level();
         boolean success = false;
         try {

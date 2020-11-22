@@ -7,11 +7,11 @@ package com.mojang.minecraft.gui;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PauseScreen extends Screen
+public class MenuScreen extends Screen
 {
     private List<Button> buttons;
     
-    public PauseScreen() {
+    public MenuScreen() {
         this.buttons = new ArrayList<Button>();
     }
     
