@@ -7,7 +7,7 @@ package com.mojang.minecraft.level.levelgen;
 import java.util.ArrayList;
 import com.mojang.minecraft.level.tile.Tile;
 import com.mojang.minecraft.level.Level;
-import com.mojang.minecraft.level.NoiseMap;
+import com.mojang.minecraft.level.PerlinNoiseFilter;
 import java.util.Random;
 import com.mojang.minecraft.level.LevelLoaderListener;
 
@@ -54,8 +54,8 @@ public class LevelGen
         final int w = this.width;
         final int h = this.height;
         final int d = this.depth;
-        final int[] heightmap1 = new NoiseMap(0).read(w, h);
-        final int[] heightmap2 = new NoiseMap(0).read(w, h);
+        final int[] heightmap1 = new PerlinNoiseFilter(0).read(w, h);
+        final int[] heightmap2 = new PerlinNoiseFilter(0).read(w, h);
         for (int x = 0; x < w; ++x) {
             for (int y = 0; y < d; ++y) {
                 for (int z = 0; z < h; ++z) {
