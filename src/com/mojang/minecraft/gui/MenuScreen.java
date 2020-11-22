@@ -33,10 +33,6 @@ public class MenuScreen extends Screen
         this.buttons.add(new Button(4, this.width / 2 - 100, this.height / 4 + 128, 200, 20, "Exit"));
     }
     
-    private void drawText(final float a) {
-    	Font.drawShadow("Test version, not final.", 2, 22, 16777215);
-    }
-    
     @Override
     protected void keyPressed(final char eventCharacter, final int eventKey) {
     }

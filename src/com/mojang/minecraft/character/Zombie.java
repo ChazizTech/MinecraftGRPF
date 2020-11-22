@@ -65,7 +65,7 @@ public class Zombie extends Entity
     @Override
     public void render(final float a) {
         GL11.glEnable(3553);
-        GL11.glBindTexture(3553, this.textures.loadTexture("/char.png", 9728));
+        GL11.glBindTexture(3553, this.textures.loadTexture("/shitass.png", 9728));
         GL11.glPushMatrix();
         final double time = System.nanoTime() / 1.0E9 * 10.0 * this.speed + this.timeOffs;
         final float size = 0.058333334f;
