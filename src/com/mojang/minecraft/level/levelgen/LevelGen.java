@@ -63,13 +63,32 @@ public class LevelGen
             for (int y = 0; y < d; ++y) {
                 for (int z = 0; z < h; ++z) {
                     final int dh = d / 2;
-                    final int rh = d / 3;
+                    //final int rh = d / 3;
+                    //final int i = (y * this.height + z) * this.width + x;
+                    final int dh1 = heightmap1[x + z * this.width];
+                    int dh2 = heightmap2[x + z * this.width];
+                    final int cfh = cf[x + z * this.width];
+                    if (cfh < 128) {
+                        dh2 = dh1;
+                    }
+                    int dh3 = dh1;
+                    if (dh2 > dh3) {
+                        dh3 = dh2;
+                    }
+                    else {
+                        dh2 = dh1;
+                    }
+                    dh3 = dh3 / 8 + d / 3;
+                    int rh = rockMap[x + z * this.width] / 8 + d / 3;
+                    if (rh > dh3 - 2) {
+                        rh = dh3 - 2;
+                    }
                     final int i = (y * this.height + z) * this.width + x;
                     int id = 0;
-                    if (y == dh && y >= d / 2 - 1) {
+                    if (y == dh3) {
                         id = Tile.grass.id;
                     }
-                    else if (y <= dh) {
+                    if (y < dh3) {
                         id = Tile.dirt.id;
                     }
                     if (y <= rh) {
