@@ -1,0 +1,63 @@
+// 
+// Decompiled by Procyon v0.5.36
+// 
+
+package com.mojang.minecraft;
+
+public class HitResult
+{
+    public int type;
+    public int x;
+    public int y;
+    public int z;
+    public int f;
+    
+    public HitResult(final int type, final int x, final int y, final int z, final int f) {
+        this.type = type;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.f = f;
+    }
+    
+    public boolean isCloserThan(final Player player, final HitResult o, final int editMode) {
+        float dist = this.distanceTo(player, 0);
+        float dist2 = o.distanceTo(player, 0);
+        if (dist < dist2) {
+            return true;
+        }
+        dist = this.distanceTo(player, editMode);
+        dist2 = o.distanceTo(player, editMode);
+        return dist < dist2;
+    }
+    
+    private float distanceTo(final Player player, final int editMode) {
+        int xx = this.x;
+        int yy = this.y;
+        int zz = this.z;
+        if (editMode == 1) {
+            if (this.f == 0) {
+                --yy;
+            }
+            if (this.f == 1) {
+                ++yy;
+            }
+            if (this.f == 2) {
+                --zz;
+            }
+            if (this.f == 3) {
+                ++zz;
+            }
+            if (this.f == 4) {
+                --xx;
+            }
+            if (this.f == 5) {
+                ++xx;
+            }
+        }
+        final float xd = xx - player.x;
+        final float yd = yy - player.y;
+        final float zd = zz - player.z;
+        return xd * xd + yd * yd + zd * zd;
+    }
+}
