@@ -620,7 +620,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         GL11.glDisable(3553);
         GL11.glPopMatrix();
         this.checkGlError("GUI: Draw selected");
-        this.font.drawShadow("0.0.13a", 2, 2, 16777215);
+        this.font.drawShadow("Minecraft grpf.0.0.13a", 2, 2, 16777215);
         this.font.drawShadow(this.fpsString, 2, 12, 16777215);
         this.checkGlError("GUI: Draw text");
         final int wc = screenWidth / 2;
