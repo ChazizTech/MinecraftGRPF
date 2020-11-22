@@ -320,7 +320,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         else {
             Mouse.setGrabbed(false);
         }
-        this.setScreen(new PauseScreen());
+        this.setScreen(new MenuScreen());
     }
     
     private void handleMouseClick() {
