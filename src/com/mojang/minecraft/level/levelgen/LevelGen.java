@@ -7,6 +7,7 @@ package com.mojang.minecraft.level.levelgen;
 import java.util.ArrayList;
 import com.mojang.minecraft.level.tile.Tile;
 import com.mojang.minecraft.level.Level;
+import com.mojang.minecraft.level.NoiseMap;
 import java.util.Random;
 import com.mojang.minecraft.level.LevelLoaderListener;
 
