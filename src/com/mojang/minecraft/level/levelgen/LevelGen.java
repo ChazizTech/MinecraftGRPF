@@ -53,6 +53,8 @@ public class LevelGen
         final int w = this.width;
         final int h = this.height;
         final int d = this.depth;
+        final int[] heightmap1 = new NoiseMap(0).read(w, h);
+        final int[] heightmap2 = new NoiseMap(0).read(w, h);
         for (int x = 0; x < w; ++x) {
             for (int y = 0; y < d; ++y) {
                 for (int z = 0; z < h; ++z) {
