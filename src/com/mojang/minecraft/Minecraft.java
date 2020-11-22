@@ -383,7 +383,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
                 if (Keyboard.getEventKeyState()) {
                     if (Keyboard.getEventKey() == 1) {
                         this.releaseMouse();
-                    }
+                    }															//refer to tile.java to find tile ID.
                     if (Keyboard.getEventKey() == 28) {
                         this.attemptSaveLevel();
                     }
@@ -391,19 +391,22 @@ public class Minecraft implements Runnable, LevelLoaderListener
                         this.player.resetPos();
                     }
                     if (Keyboard.getEventKey() == 2) {
-                        this.paintTexture = 1;
+                        this.paintTexture = 1; //rock (stone)
                     }
                     if (Keyboard.getEventKey() == 3) {
-                        this.paintTexture = 3;
+                        this.paintTexture = 3; //dirt
                     }
                     if (Keyboard.getEventKey() == 4) {
-                        this.paintTexture = 4;
+                        this.paintTexture = 4; //stoneBricks
                     }
                     if (Keyboard.getEventKey() == 5) {
-                        this.paintTexture = 5;
+                        this.paintTexture = 5; //wood
                     }
                     if (Keyboard.getEventKey() == 7) {
-                        this.paintTexture = 6;
+                        this.paintTexture = 6; //non-functional bush
+                    }
+                    if (Keyboard.getEventKey() == 8) {
+                        this.paintTexture = 12;  //white cloth
                     }
                     if (Keyboard.getEventKey() == 21) {
                         this.yMouseAxis *= -1;
