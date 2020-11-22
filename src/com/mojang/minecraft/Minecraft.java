@@ -624,6 +624,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         this.checkGlError("GUI: Draw selected");
         this.font.drawShadow("Minecraft grpf.0.0.13a", 2, 2, 16777215);
         this.font.drawShadow(this.fpsString, 2, 12, 16777215);
+        this.font.drawShadow("Test version, not final.", 2, 22, 16777215);
         this.checkGlError("GUI: Draw text");
         final int wc = screenWidth / 2;
         final int hc = screenHeight / 2;

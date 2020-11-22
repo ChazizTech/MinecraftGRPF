@@ -55,6 +55,10 @@ public class MenuScreen extends Screen
             this.minecraft.setScreen(null);
             this.minecraft.grabMouse();
         }
+        if (button.id == 3) {
+            this.minecraft.setScreen(null);
+            this.minecraft.grabMouse();
+        }
         if (button.id == 4) {
         	System.exit(0);
         }
