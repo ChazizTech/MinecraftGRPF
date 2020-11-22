@@ -66,7 +66,7 @@ public class MenuScreen extends Screen
     
     @Override
     public void render(final int xm, final int ym) {
-    	this.fill(0, 0, this.width, this.height, 8421504);
+    	this.fillGradient(0, 0, this.width, this.height, 537199872, -1607454624);
         for (int i = 0; i < this.buttons.size(); ++i) {
             final Button button = this.buttons.get(i);
             this.fill(button.x - 1, button.y - 1, button.x + button.w + 1, button.y + button.h + 1, -16777216);
