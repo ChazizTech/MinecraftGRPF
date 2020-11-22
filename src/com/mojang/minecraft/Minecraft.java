@@ -128,7 +128,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         else {
             Display.setDisplayMode(new DisplayMode(this.width, this.height));
         }
-        Display.setTitle("Minecraft 0.0.13a");
+        Display.setTitle("Minecraft grpf.0.0.13a");
         try {
             Display.create();
         }
@@ -236,7 +236,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         }
         catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, e.toString(), "Failed to start Minecraft [GRPF94 Fork]", 0);
+            JOptionPane.showMessageDialog(null, e.toString(), "Failed to start Minecraft", 0);
             return;
         }
         long lastTime = System.currentTimeMillis();
@@ -620,7 +620,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         GL11.glDisable(3553);
         GL11.glPopMatrix();
         this.checkGlError("GUI: Draw selected");
-        this.font.drawShadow("Minecraft grpf.0.0.13a", 2, 2, 16777215);
+        this.font.drawShadow("0.0.13a", 2, 2, 16777215);
         this.font.drawShadow(this.fpsString, 2, 12, 16777215);
         this.checkGlError("GUI: Draw text");
         final int wc = screenWidth / 2;
