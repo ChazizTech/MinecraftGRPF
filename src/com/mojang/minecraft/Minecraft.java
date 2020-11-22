@@ -174,7 +174,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
             success = false;
         }
         if (!success) {
-            this.levelGen.generateLevel(this.level, this.user.name, 256, 256, 64);
+            this.levelGen.generateLevel(this.level, this.user.name, 512, 512, 64);
         }
         this.levelRenderer = new LevelRenderer(this.level, this.textures);
         this.player = new Player(this.level);
@@ -730,8 +730,10 @@ public class Minecraft implements Runnable, LevelLoaderListener
         catch (Exception ex) {}
     }
     
+    
+    //Level generation used by Pause Screen.
     public void generateNewLevel() {
-        this.levelGen.generateLevel(this.level, this.user.name, 32, 512, 64);
+        this.levelGen.generateLevel(this.level, this.user.name, 512, 512, 64);
         this.player.resetPos();
         for (int i = 0; i < this.entities.size(); ++i) {
             this.entities.remove(i--);
