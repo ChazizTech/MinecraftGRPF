@@ -44,7 +44,7 @@ import com.mojang.minecraft.level.LevelLoaderListener;
 
 public class Minecraft implements Runnable, LevelLoaderListener
 {
-    public static final String VERSION_STRING = "grpf.0.0.13a";
+    public static final String VERSION_STRING = "0.0.13a";
     private boolean fullscreen;
     public int width;
     public int height;
@@ -128,7 +128,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         else {
             Display.setDisplayMode(new DisplayMode(this.width, this.height));
         }
-        Display.setTitle("Minecraft grpf.0.0.13a");
+        Display.setTitle("Minecraft 0.0.13a");
         try {
             Display.create();
         }
