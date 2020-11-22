@@ -6,10 +6,14 @@ package com.mojang.minecraft.gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.mojang.minecraft.renderer.Textures;
+import com.mojang.minecraft.gui.Screen;
+import com.mojang.minecraft.gui.Font;
 
 public class MenuScreen extends Screen
 {
     private List<Button> buttons;
+    public Textures textures;
     
     public MenuScreen() {
         this.buttons = new ArrayList<Button>();
@@ -57,7 +61,6 @@ public class MenuScreen extends Screen
     
     @Override
     public void render(final int xm, final int ym) {
-        this.fillGradient(0, 0, this.width, this.height, 537199872, -1607454624);
         for (int i = 0; i < this.buttons.size(); ++i) {
             final Button button = this.buttons.get(i);
             this.fill(button.x - 1, button.y - 1, button.x + button.w + 1, button.y + button.h + 1, -16777216);
