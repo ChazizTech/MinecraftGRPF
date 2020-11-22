@@ -30,7 +30,6 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.BufferUtils;
 import java.nio.IntBuffer;
 import com.mojang.minecraft.level.levelgen.LevelGen;
-import com.mojang.minecraft.level.levelgen.TakeAShit;
 import com.mojang.minecraft.level.LevelIO;
 import com.mojang.minecraft.gui.Screen;
 import com.mojang.minecraft.gui.Font;
