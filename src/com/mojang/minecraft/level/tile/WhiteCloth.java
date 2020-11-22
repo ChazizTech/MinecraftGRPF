@@ -13,7 +13,7 @@ public class WhiteCloth extends Tile
 {
     protected WhiteCloth(final int id) {
         super(id);
-        this.tex = 15;
+        this.tex = 18;
         this.setTicking(true);
     }
     
@@ -67,8 +67,8 @@ public class WhiteCloth extends Tile
         return false;
     }
     
-    @Override
-    public boolean isSolid() {
-        return false;
-    }
+//    @Override
+//    public boolean isSolid() {
+//        return false;
+//    }
 }
