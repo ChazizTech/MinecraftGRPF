@@ -21,6 +21,7 @@ public class PauseScreen extends Screen
         this.buttons.add(new Button(1, this.width / 2 - 100, this.height / 3 + 32, 200, 20, "Save level.."));
         this.buttons.add(new Button(2, this.width / 2 - 100, this.height / 3 + 64, 200, 20, "Load level.."));
         this.buttons.add(new Button(3, this.width / 2 - 100, this.height / 3 + 96, 200, 20, "Back to game"));
+        this.buttons.add(new Button(4, this.width / 2 - 100, this.height / 3 + 128, 200, 20, "Exit"));
     }
     
     @Override
@@ -48,6 +49,9 @@ public class PauseScreen extends Screen
         if (button.id == 3) {
             this.minecraft.setScreen(null);
             this.minecraft.grabMouse();
+        }
+        if (button.id == 4) {
+        	System.exit(0);
         }
     }
     
