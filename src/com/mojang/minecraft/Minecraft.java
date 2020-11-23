@@ -408,6 +408,12 @@ public class Minecraft implements Runnable, LevelLoaderListener
                     if (Keyboard.getEventKey() == 8) {
                         this.paintTexture = 12;  //white cloth
                     }
+                    if (Keyboard.getEventKey() == Keyboard.KEY_PERIOD) {
+                        this.paintTexture += 1;
+                    }
+                    if (Keyboard.getEventKey() == Keyboard.KEY_COMMA) {
+                        this.paintTexture -= 1;
+                    }
                     if (Keyboard.getEventKey() == 21) {
                         this.yMouseAxis *= -1;
                     }
