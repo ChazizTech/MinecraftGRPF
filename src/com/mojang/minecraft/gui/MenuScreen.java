@@ -27,7 +27,7 @@ public class MenuScreen extends Screen
     @Override
     public void init() {
         this.buttons.add(new Button(0, this.width / 2 - 100, this.height / 4 + 0, 200, 20, "New level.."));
-        this.buttons.add(new Button(1, this.width / 2 - 100, this.height / 4 + 32, 200, 20, "Save level.."));
+        //this.buttons.add(new Button(1, this.width / 2 - 100, this.height / 4 + 32, 200, 20, "Save level.."));
         this.buttons.add(new Button(2, this.width / 2 - 100, this.height / 4 + 64, 200, 20, "Load level.."));
         this.buttons.add(new Button(3, this.width / 2 - 100, this.height / 4 + 96, 200, 20, "Continue level.."));
         this.buttons.add(new Button(4, this.width / 2 - 100, this.height / 4 + 128, 200, 20, "Exit"));
