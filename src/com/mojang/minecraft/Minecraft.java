@@ -52,7 +52,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
     private FloatBuffer fogColor0;
     private FloatBuffer fogColor1;
     private Timer timer;
-    private Level level;
+    public static Level level;
     private LevelRenderer levelRenderer;
     private Player player;
     private int paintTexture;
@@ -68,7 +68,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
     public Font font;
     private int editMode;
     private Screen screen;
-    private LevelIO levelIo;
+    public static LevelIO levelIo;
     private LevelGen levelGen;
     private volatile boolean running;
     private String fpsString;
@@ -215,7 +215,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         }
     }
     
-    protected void attemptSaveLevel() {
+    public void attemptSaveLevel() {
         try {
             this.levelIo.save(this.level, new FileOutputStream(new File("level.dat")));
         }
@@ -320,7 +320,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         else {
             Mouse.setGrabbed(false);
         }
-        this.setScreen(new MenuScreen());
+        this.setScreen(new PauseScreen());
     }
     
     private void handleMouseClick() {

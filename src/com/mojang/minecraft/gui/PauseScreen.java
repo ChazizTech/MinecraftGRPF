@@ -4,8 +4,13 @@
 
 package com.mojang.minecraft.gui;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.mojang.minecraft.Minecraft;
+import com.mojang.minecraft.level.LevelIO;
 
 public class PauseScreen extends Screen
 {
@@ -46,9 +51,8 @@ public class PauseScreen extends Screen
             this.minecraft.setScreen(null);
             this.minecraft.grabMouse();
         }
-        if (button.id == 2) {
-            this.minecraft.setScreen(null);
-            this.minecraft.grabMouse();
+        if (button.id == 1) {
+        	attemptSaveLevel();
         }
         if (button.id == 3) {
             this.minecraft.setScreen(null);
@@ -56,6 +60,15 @@ public class PauseScreen extends Screen
         }
         if (button.id == 4) {
         	System.exit(0);
+        }
+    }
+    
+    public void attemptSaveLevel() {
+        try {
+        	Minecraft.levelIo.save(Minecraft.level, new FileOutputStream(new File("level.dat")));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
     
