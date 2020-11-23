@@ -415,6 +415,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
                     }
                     
                     if (Keyboard.getEventKey() == Keyboard.KEY_COMMA) {
+                    	if (this.paintTexture != 1)
                         	this.paintTexture -= 1;
                     }
                     if (Keyboard.getEventKey() == 21) {
