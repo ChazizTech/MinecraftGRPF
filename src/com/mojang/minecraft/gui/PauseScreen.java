@@ -55,6 +55,7 @@ public class PauseScreen extends Screen
         	attemptSaveLevel();
         	this.minecraft.setScreen(null);
             this.minecraft.grabMouse();
+            System.out.println("Level saved?");
         }
         if (button.id == 3) {
             this.minecraft.setScreen(null);
