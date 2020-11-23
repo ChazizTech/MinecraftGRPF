@@ -14,7 +14,7 @@ public class WhiteCloth extends Tile
     protected WhiteCloth(final int id) {
         super(id);
         this.tex = 18;
-        this.setTicking(true);
+        //this.setTicking(true);
     }
     
     @Override
@@ -35,8 +35,8 @@ public class WhiteCloth extends Tile
         return false;
     }
     
-//    @Override
-//    public boolean isSolid() {
-//        return false;
-//    }
+    @Override
+    public boolean isSolid() {
+        return true;
+    }
 }
