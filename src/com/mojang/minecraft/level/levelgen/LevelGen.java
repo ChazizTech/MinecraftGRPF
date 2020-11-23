@@ -35,13 +35,13 @@ public class LevelGen
         this.blocks = new byte[width * height * depth];
         this.levelLoaderListener.levelLoadUpdate("Raising..");
         final double[] heightMap = this.buildHeightmap(width, height);
-        this.levelLoaderListener.levelLoadUpdate("Eroding.. [buildBlocks(heightMap]");
+        this.levelLoaderListener.levelLoadUpdate("Eroding..");
         this.buildBlocks(heightMap);
-        this.levelLoaderListener.levelLoadUpdate("Carving.. [carveTunnels()]");
+        this.levelLoaderListener.levelLoadUpdate("Carving..");
         this.carveTunnels();
-        this.levelLoaderListener.levelLoadUpdate("Watering.. [addWater()]");
+        this.levelLoaderListener.levelLoadUpdate("Watering..");
         this.addWater();
-        this.levelLoaderListener.levelLoadUpdate("Melting.. [addLava()]");
+        this.levelLoaderListener.levelLoadUpdate("Melting..");
         this.addLava();
         level.setData(width, depth, height, this.blocks);
         level.createTime = System.currentTimeMillis();

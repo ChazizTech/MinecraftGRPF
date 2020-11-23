@@ -25,8 +25,8 @@ public class Screen
     
     public void init(final Minecraft minecraft, final int width, final int height) {
         this.minecraft = minecraft;
-        this.width = width;
-        this.height = height;
+        this.width = 800;
+        this.height = 800;
         this.init();
     }
     
