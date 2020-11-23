@@ -724,7 +724,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         GL11.glClear(16640);
         final Tesselator t = Tesselator.instance;
         GL11.glEnable(3553);
-        final int id = this.textures.loadTexture("/dirt.png", 9728);
+        final int id = this.textures.loadTexture("/wood.png", 9728);
         GL11.glBindTexture(3553, id);
         t.begin();
         t.color(8421504);
