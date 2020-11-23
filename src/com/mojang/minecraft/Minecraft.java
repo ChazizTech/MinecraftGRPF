@@ -408,8 +408,9 @@ public class Minecraft implements Runnable, LevelLoaderListener
                     if (Keyboard.getEventKey() == 8) {
                         this.paintTexture = 12;  //white cloth
                     }
-                    
+                  
                     if (Keyboard.getEventKey() == Keyboard.KEY_PERIOD) {
+                    	if (this.paintTexture != 12)
                             this.paintTexture += 1;
                     }
                     
@@ -429,6 +430,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
                 }
             }
         }
+
         if (this.screen != null) {
             this.screen.updateEvents();
             if (this.screen != null) {
