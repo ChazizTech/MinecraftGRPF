@@ -25,10 +25,10 @@ public class WhiteCloth extends Tile
         }
     }
     
-    @Override
-    public AABB getAABB(final int x, final int y, final int z) {
-        return null;
-    }
+//    @Override
+//    public AABB getAABB(final int x, final int y, final int z) {
+//        return null;
+//    }
     
     @Override
     public boolean blocksLight() {
