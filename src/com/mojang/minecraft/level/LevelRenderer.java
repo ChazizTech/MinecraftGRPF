@@ -6,6 +6,7 @@ package com.mojang.minecraft.level;
 
 import com.mojang.minecraft.HitResult;
 import com.mojang.minecraft.phys.AABB;
+import com.mojang.minecraft.a.a;
 import com.mojang.minecraft.level.tile.Tile;
 import com.mojang.minecraft.renderer.Frustum;
 import java.util.Collections;
@@ -29,6 +30,8 @@ public class LevelRenderer implements LevelListener
     private int yChunks;
     private int zChunks;
     private Textures textures;
+    public int c; //obfuscated shit i can't fix for fuck sakes
+    private Textures g;
     private int surroundLists;
     private int drawDistance;
     float lX;
@@ -37,7 +40,9 @@ public class LevelRenderer implements LevelListener
     
     public LevelRenderer(final Level level, final Textures textures) {
         this.drawDistance = 0;
+        this.c = 0;
         this.lX = 0.0f;
+        this.c = 0;
         this.lY = 0.0f;
         this.lZ = 0.0f;
         this.level = level;
@@ -92,9 +97,9 @@ public class LevelRenderer implements LevelListener
     
     public final void a(float n) {
         GL11.glEnable(3553);
-        GL11.glBindTexture(3553, this.g.a("/clouds.png", 9728));
+        GL11.glBindTexture(3553, this.textures.loadTexture("/clouds.png", 9728));
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        final c a = com.mojang.minecraft.a.c.a;
+        final c a = com.mojang.minecraft.Textures.c.a;
         final float n2 = 4.8828125E-4f;
         final float n3 = (float)(this.a.depth + 2);
         n = (this.f + n) * n2 * 0.03f;
