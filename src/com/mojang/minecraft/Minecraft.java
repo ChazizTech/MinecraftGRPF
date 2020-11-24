@@ -92,7 +92,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         this.yMouseAxis = 1;
         this.editMode = 0;
         this.screen = null;
-        this.levelIo = new LevelIO(this);
+        Minecraft.levelIo = new LevelIO(this);
         this.levelGen = new LevelGen(this);
         this.running = false;
         this.fpsString = "";
@@ -162,25 +162,25 @@ public class Minecraft implements Runnable, LevelLoaderListener
         imgData.clear().limit(256);
         GL11.glViewport(0, 0, this.width, this.height);
         this.setScreen(new MenuScreen());
-        this.level = new Level();
+        Minecraft.level = new Level();
         boolean success = false;
         try {
-            success = this.levelIo.load(this.level, new FileInputStream(new File("level.dat")));
+            success = Minecraft.levelIo.load(Minecraft.level, new FileInputStream(new File("level.dat")));
             if (!success) {
-                success = this.levelIo.loadLegacy(this.level, new FileInputStream(new File("level.dat")));
+                success = Minecraft.levelIo.loadLegacy(Minecraft.level, new FileInputStream(new File("level.dat")));
             }
         }
         catch (Exception e3) {
             success = false;
         }
         if (!success) {
-            this.levelGen.generateLevel(this.level, this.user.name, 256, 256, 64);
+            this.levelGen.generateLevel(Minecraft.level, this.user.name, 256, 256, 64);
         }
-        this.levelRenderer = new LevelRenderer(this.level, this.textures);
-        this.player = new Player(this.level);
-        this.particleEngine = new ParticleEngine(this.level, this.textures);
+        this.levelRenderer = new LevelRenderer(Minecraft.level, this.textures);
+        this.player = new Player(Minecraft.level);
+        this.particleEngine = new ParticleEngine(Minecraft.level, this.textures);
         for (int i = 0; i < 10; ++i) {
-            final Zombie zombie = new Zombie(this.level, this.textures, 128.0f, 0.0f, 128.0f);
+            final Zombie zombie = new Zombie(Minecraft.level, this.textures, 128.0f, 0.0f, 128.0f);
             zombie.resetPos();
             this.entities.add(zombie);
         }
@@ -217,7 +217,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
     
     public void attemptSaveLevel() {
         try {
-            this.levelIo.save(this.level, new FileOutputStream(new File("level.dat")));
+            Minecraft.levelIo.save(Minecraft.level, new FileOutputStream(new File("level.dat")));
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -326,10 +326,10 @@ public class Minecraft implements Runnable, LevelLoaderListener
     private void handleMouseClick() {
         if (this.editMode == 0) {
             if (this.hitResult != null) {
-                final Tile oldTile = Tile.tiles[this.level.getTile(this.hitResult.x, this.hitResult.y, this.hitResult.z)];
-                final boolean changed = this.level.setTile(this.hitResult.x, this.hitResult.y, this.hitResult.z, 0);
+                final Tile oldTile = Tile.tiles[Minecraft.level.getTile(this.hitResult.x, this.hitResult.y, this.hitResult.z)];
+                final boolean changed = Minecraft.level.setTile(this.hitResult.x, this.hitResult.y, this.hitResult.z, 0);
                 if (oldTile != null && changed) {
-                    oldTile.destroy(this.level, this.hitResult.x, this.hitResult.y, this.hitResult.z, this.particleEngine);
+                    oldTile.destroy(Minecraft.level, this.hitResult.x, this.hitResult.y, this.hitResult.z, this.particleEngine);
                 }
             }
         }
@@ -357,7 +357,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
             }
             final AABB aabb = Tile.tiles[this.paintTexture].getAABB(x, y, z);
             if (aabb == null || this.isFree(aabb)) {
-                this.level.setTile(x, y, z, this.paintTexture);
+                Minecraft.level.setTile(x, y, z, this.paintTexture);
             }
         }
     }
@@ -422,7 +422,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
                         this.yMouseAxis *= -1;
                     }
                     if (Keyboard.getEventKey() == 34) {
-                        this.entities.add(new Zombie(this.level, this.textures, this.player.x, this.player.y, this.player.z));
+                        this.entities.add(new Zombie(Minecraft.level, this.textures, this.player.x, this.player.y, this.player.z));
                     }
                     if (Keyboard.getEventKey() != 33) {
                         continue;
@@ -438,7 +438,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
                 this.screen.tick();
             }
         }
-        this.level.tick();
+        Minecraft.level.tick();
         this.particleEngine.tick();
         for (int i = 0; i < this.entities.size(); ++i) {
             this.entities.get(i).tick();
@@ -631,7 +631,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         GL11.glBindTexture(3553, id);
         GL11.glEnable(3553);
         t.begin();
-        Tile.tiles[this.paintTexture].render(t, this.level, 0, -2, 0, 0);
+        Tile.tiles[this.paintTexture].render(t, Minecraft.level, 0, -2, 0, 0);
         t.end();
         GL11.glDisable(3553);
         GL11.glPopMatrix();
@@ -660,7 +660,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
     }
     
     private void setupFog(final int i) {
-        final Tile currentTile = Tile.tiles[this.level.getTile((int)this.player.x, (int)(this.player.y + 0.12f), (int)this.player.z)];
+        final Tile currentTile = Tile.tiles[Minecraft.level.getTile((int)this.player.x, (int)(this.player.y + 0.12f), (int)this.player.z)];
         if (currentTile != null && currentTile.getLiquidType() == 1) {
             GL11.glFogi(2917, 2048);
             GL11.glFogf(2914, 0.1f);
@@ -747,7 +747,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
     
     //Level generation used by Pause Screen.
     public void generateNewLevel() {
-        this.levelGen.generateLevel(this.level, this.user.name, 256, 256, 64);
+        this.levelGen.generateLevel(Minecraft.level, this.user.name, 256, 256, 64);
         this.player.resetPos();
         for (int i = 0; i < this.entities.size(); ++i) {
             this.entities.remove(i--);
