@@ -6,7 +6,7 @@ package com.mojang.minecraft.level;
 
 import com.mojang.minecraft.HitResult;
 import com.mojang.minecraft.phys.AABB;
-import com.mojang.minecraft.a.a;
+//import com.mojang.minecraft.a.a;
 import com.mojang.minecraft.level.tile.Tile;
 import com.mojang.minecraft.renderer.Frustum;
 import java.util.Collections;
@@ -95,7 +95,7 @@ public class LevelRenderer implements LevelListener
         }
     }
     
-    public final void a(float n) {
+ /*   public final void a(float n) {
         GL11.glEnable(3553);
         GL11.glBindTexture(3553, this.textures.loadTexture("/clouds.png", 9728));
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
@@ -116,7 +116,7 @@ public class LevelRenderer implements LevelListener
                 a.a((float)i, n3, (float)(j + 512), i * n2 + n, (j + 512) * n2);
             }
         }
-    
+*/    
     public List<Chunk> getAllDirtyChunks() {
         ArrayList<Chunk> dirty = null;
         for (int i = 0; i < this.chunks.length; ++i) {
