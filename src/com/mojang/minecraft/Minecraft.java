@@ -238,7 +238,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         }
         catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, e.toString(), "Failed to start Minecraft", 0);
+            JOptionPane.showMessageDialog(null, e.toString(), "Failed to start MinecraftGRPF", 0);
             return;
         }
         long lastTime = System.currentTimeMillis();
@@ -636,9 +636,9 @@ public class Minecraft implements Runnable, LevelLoaderListener
         GL11.glDisable(3553);
         GL11.glPopMatrix();
         this.checkGlError("GUI: Draw selected");
-        this.font.drawShadow("MinecraftGRPF 0.1.0a", 2, 2, 16777215);
+        this.font.drawShadow("MinecraftGRPF 0.1.0b", 2, 2, 16777215);
         this.font.drawShadow(this.fpsString, 2, 12, 16777215);
-        //this.font.drawShadow("Test version", 2, 22, 16777215);
+        this.font.drawShadow("Test version", 2, 22, 16777215);
         this.checkGlError("GUI: Draw text");
         final int wc = screenWidth / 2;
         final int hc = screenHeight / 2;
