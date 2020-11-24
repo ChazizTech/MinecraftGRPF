@@ -13,7 +13,7 @@ public class WhiteCloth extends Tile
 {
     protected WhiteCloth(final int id) {
         super(id);
-        this.tex = 18;
+        this.tex = 79;
         //this.setTicking(true);
     }
     
