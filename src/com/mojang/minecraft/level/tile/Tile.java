@@ -36,6 +36,10 @@ public class Tile
     public static final Tile BlackCloth;
     public static final Tile HotCloth;
     public static final Tile MageCloth;
+    public static final Tile Purp1Cloth;
+    public static final Tile Purp2Cloth;
+    public static final Tile BlueCloth;
+    public static final Tile BlueBrightCloth;
     public int tex;
     public final int id;
     protected float xx0;
@@ -65,6 +69,10 @@ public class Tile
         BlackCloth = new ClothBlack(14);
         HotCloth = new ClothHotPink(15);
         MageCloth = new ClothMagenta(16);
+        Purp1Cloth = new ClothPurple(17);
+        Purp2Cloth = new ClothPurple2(18);
+        BlueCloth = new ClothBlue(19);
+        BlueBrightCloth = new ClothLightblue(20);
     }
     
     protected Tile(final int id) {
