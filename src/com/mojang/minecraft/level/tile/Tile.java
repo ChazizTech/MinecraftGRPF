@@ -32,6 +32,7 @@ public class Tile
     public static final Tile lava;
     public static final Tile calmLava;
     public static final Tile WhiteCloth;
+    public static final Tile GrayCloth;
     public int tex;
     public final int id;
     protected float xx0;
@@ -57,6 +58,7 @@ public class Tile
         lava = new LiquidTile(10, 2);
         calmLava = new CalmLiquidTile(11, 2);
         WhiteCloth = new WhiteCloth(12);
+        GrayCloth = new GrayCloth(13);
     }
     
     protected Tile(final int id) {
