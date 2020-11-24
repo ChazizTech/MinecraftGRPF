@@ -7,11 +7,11 @@ package com.mojang.minecraft.level.tile;
 import java.util.Random;
 import com.mojang.minecraft.level.Level;
 
-public class GrayCloth extends Tile
+public class ClothWhite extends Tile
 {
-    protected GrayCloth(final int id) {
+    protected ClothWhite(final int id) {
         super(id);
-        this.tex = 78;
+        this.tex = 79;
         //this.setTicking(true);
     }
     

@@ -57,8 +57,8 @@ public class Tile
         calmWater = new CalmLiquidTile(9, 1);
         lava = new LiquidTile(10, 2);
         calmLava = new CalmLiquidTile(11, 2);
-        WhiteCloth = new WhiteCloth(12);
-        GrayCloth = new GrayCloth(13);
+        WhiteCloth = new ClothWhite(12);
+        GrayCloth = new ClothGray(13);
     }
     
     protected Tile(final int id) {
