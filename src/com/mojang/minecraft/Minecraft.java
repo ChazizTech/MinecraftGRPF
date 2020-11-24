@@ -474,7 +474,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
     private void setupCamera(final float a) {
         GL11.glMatrixMode(5889);
         GL11.glLoadIdentity();
-        GLU.gluPerspective(90.0f, this.width / (float)this.height, 0.05f, 1024.0f);
+        GLU.gluPerspective(70.0f, this.width / (float)this.height, 0.05f, 1024.0f);
         GL11.glMatrixMode(5888);
         GL11.glLoadIdentity();
         this.moveCameraToPlayer(a);
