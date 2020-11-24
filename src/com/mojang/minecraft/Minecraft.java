@@ -98,6 +98,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         this.levelGen = new LevelGen(this);
         this.running = false;
         this.fpsString = "";
+        this.paintTextureString = "PLACEHOLDER";
         this.mouseGrabbed = false;
         this.viewportBuffer = BufferUtils.createIntBuffer(16);
         this.selectBuffer = BufferUtils.createIntBuffer(2000);
@@ -642,7 +643,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         this.font.drawShadow("MinecraftGRPF 0.1.0b", 2, 2, 16777215);
         this.font.drawShadow(this.fpsString, 2, 12, 16777215);
         this.font.drawShadow("Test version", 2, 22, 16777215);
-        this.font.drawShadow(this.paintTexture, 2, 52, 16777215);
+        this.font.drawShadow(this.paintTextureString, 2, 52, 16777215);
         this.checkGlError("GUI: Draw text");
         final int wc = screenWidth / 2;
         final int hc = screenHeight / 2;
