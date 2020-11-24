@@ -129,7 +129,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         else {
             Display.setDisplayMode(new DisplayMode(this.width, this.height));
         }
-        Display.setTitle("MinecraftGRPF 0.1.0a");
+        Display.setTitle("MinecraftGRPF 0.1.0b");
         try {
             Display.create();
         }
