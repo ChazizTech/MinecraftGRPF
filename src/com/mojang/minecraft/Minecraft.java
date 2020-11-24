@@ -72,6 +72,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
     private LevelGen levelGen;
     private volatile boolean running;
     private String fpsString;
+    private String cordString;
     private boolean mouseGrabbed;
     private IntBuffer viewportBuffer;
     private IntBuffer selectBuffer;
@@ -230,55 +231,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         Keyboard.destroy();
         Display.destroy();
     }
-    
-    public void run() {
-        this.running = true;
-        try {
-            this.init();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, e.toString(), "Failed to start MinecraftGRPF", 0);
-            return;
-        }
-        long lastTime = System.currentTimeMillis();
-        int frames = 0;
-        try {
-            while (this.running) {
-                if (this.pause) {
-                    Thread.sleep(100L);
-                }
-                else {
-                    if (this.parent == null && Display.isCloseRequested()) {
-                        this.stop();
-                    }
-                    this.timer.advanceTime();
-                    for (int i = 0; i < this.timer.ticks; ++i) {
-                        this.tick();
-                    }
-                    this.checkGlError("Pre render");
-                    this.render(this.timer.a);
-                    this.checkGlError("Post render");
-                    ++frames;
-                    while (System.currentTimeMillis() >= lastTime + 1000L) {
-                        this.fpsString = String.valueOf(frames) + " fps, " + Chunk.updates + " chunk updates";
-                        Chunk.updates = 0;
-                        lastTime += 1000L;
-                        frames = 0;
-                    }
-                }
-            }
-        }
-        catch (Exception e2) {
-            e2.printStackTrace();
-            return;
-        }
-        finally {
-            this.destroy();
-        }
-        this.destroy();
-    }
-    
+
     public void stop() {
         this.running = false;
     }
@@ -606,6 +559,55 @@ public class Minecraft implements Runnable, LevelLoaderListener
         Display.update();
     }
     
+    public void run() {
+        this.running = true;
+        try {
+            this.init();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.toString(), "Failed to start MinecraftGRPF", 0);
+            return;
+        }
+        long lastTime = System.currentTimeMillis();
+        int frames = 0;
+        try {
+            while (this.running) {
+                if (this.pause) {
+                    Thread.sleep(100L);
+                }
+                else {
+                    if (this.parent == null && Display.isCloseRequested()) {
+                        this.stop();
+                    }
+                    this.timer.advanceTime();
+                    for (int i = 0; i < this.timer.ticks; ++i) {
+                        this.tick();
+                    }
+                    this.checkGlError("Pre render");
+                    this.render(this.timer.a);
+                    this.checkGlError("Post render");
+                    ++frames;
+                    while (System.currentTimeMillis() >= lastTime + 1000L) {
+                        this.fpsString = String.valueOf(frames) + " fps, " + Chunk.updates + " chunk updates";
+                        Chunk.updates = 0;
+                        lastTime += 1000L;
+                        frames = 0;
+                    }
+                }
+            }
+        }
+        catch (Exception e2) {
+            e2.printStackTrace();
+            return;
+        }
+        finally {
+            this.destroy();
+        }
+        this.destroy();
+    }
+    
+    
     private void drawGui(final float a) {
         final int screenWidth = this.width * 240 / this.height;
         final int screenHeight = this.height * 240 / this.height;
@@ -639,6 +641,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         this.font.drawShadow("MinecraftGRPF 0.1.0b", 2, 2, 16777215);
         this.font.drawShadow(this.fpsString, 2, 12, 16777215);
         this.font.drawShadow("Test version", 2, 22, 16777215);
+        this.font.drawShadow("this.cordString", 2, 42, 16777215);
         this.checkGlError("GUI: Draw text");
         final int wc = screenWidth / 2;
         final int hc = screenHeight / 2;
