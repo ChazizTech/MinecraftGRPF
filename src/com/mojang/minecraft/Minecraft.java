@@ -594,6 +594,12 @@ public class Minecraft implements Runnable, LevelLoaderListener
                         lastTime += 1000L;
                         frames = 0;
                     }
+                    while (System.currentTimeMillis() >= lastTime + 1000L) {
+                        this.fpsString = String.valueOf(frames) + " fps, " + Chunk.updates + " chunk updates";
+                        Chunk.updates = 0;
+                        lastTime += 1000L;
+                        frames = 0;
+                    }
                 }
             }
         }
@@ -641,7 +647,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         this.font.drawShadow("MinecraftGRPF 0.1.0b", 2, 2, 16777215);
         this.font.drawShadow(this.fpsString, 2, 12, 16777215);
         this.font.drawShadow("Test version", 2, 22, 16777215);
-        this.font.drawShadow("this.cordString", 2, 42, 16777215);
+        this.font.drawShadow(this.cordString, 2, 42, 16777215);
         this.checkGlError("GUI: Draw text");
         final int wc = screenWidth / 2;
         final int hc = screenHeight / 2;
