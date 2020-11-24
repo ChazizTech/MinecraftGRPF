@@ -4,8 +4,6 @@
 
 package com.mojang.minecraft.level.tile;
 
-import com.mojang.minecraft.phys.AABB;
-import com.mojang.minecraft.renderer.Tesselator;
 import java.util.Random;
 import com.mojang.minecraft.level.Level;
 
@@ -24,11 +22,6 @@ public class WhiteCloth extends Tile
             level.setTile(x, y, z, 0);
         }
     }
-    
-//    @Override
-//    public AABB getAABB(final int x, final int y, final int z) {
-//        return null;
-//    }
     
     @Override
     public boolean blocksLight() {
