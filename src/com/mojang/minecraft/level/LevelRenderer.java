@@ -90,6 +90,28 @@ public class LevelRenderer implements LevelListener
         }
     }
     
+    public final void a(float n) {
+        GL11.glEnable(3553);
+        GL11.glBindTexture(3553, this.g.a("/clouds.png", 9728));
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        final c a = com.mojang.minecraft.a.c.a;
+        final float n2 = 4.8828125E-4f;
+        final float n3 = (float)(this.a.depth + 2);
+        n = (this.f + n) * n2 * 0.03f;
+        a.b();
+        for (int i = -2048; i < this.a.width + 2048; i += 512) {
+            for (int j = -2048; j < this.a.height + 2048; j += 512) {
+                a.a((float)i, n3, (float)(j + 512), i * n2 + n, (j + 512) * n2);
+                a.a((float)(i + 512), n3, (float)(j + 512), (i + 512) * n2 + n, (j + 512) * n2);
+                a.a((float)(i + 512), n3, (float)j, (i + 512) * n2 + n, j * n2);
+                a.a((float)i, n3, (float)j, i * n2 + n, j * n2);
+                a.a((float)i, n3, (float)j, i * n2 + n, j * n2);
+                a.a((float)(i + 512), n3, (float)j, (i + 512) * n2 + n, j * n2);
+                a.a((float)(i + 512), n3, (float)(j + 512), (i + 512) * n2 + n, (j + 512) * n2);
+                a.a((float)i, n3, (float)(j + 512), i * n2 + n, (j + 512) * n2);
+            }
+        }
+    
     public List<Chunk> getAllDirtyChunks() {
         ArrayList<Chunk> dirty = null;
         for (int i = 0; i < this.chunks.length; ++i) {
