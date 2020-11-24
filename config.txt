@@ -10,3 +10,4 @@ file-font-side=9
 key=true
 viewport=1280x720
 filename-time=2
+caption-file=gource_captions.txt
