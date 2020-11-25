@@ -49,6 +49,7 @@ public class Tile
     public static final Tile Bob;
     public static final Tile BlueGuy;
     public static final Tile BlackMud;
+    public static final Tile Glass;
     public int tex;
     public final int id;
     protected float xx0;
@@ -91,6 +92,7 @@ public class Tile
         Bob = new BobFur(27);
         BlueGuy = new BlueGuy(28);
         BlackMud = new DarkMud(29);
+        Glass = new Glass(30);
     }
     
     protected Tile(final int id) {
