@@ -367,11 +367,13 @@ public class Minecraft implements Runnable, LevelLoaderListener
                     if (Keyboard.getEventKey() == Keyboard.KEY_PERIOD) {
                     	if (this.paintTexture != 20)
                             this.paintTexture += 1;
+                    		this.paintTextureString = ("block selected:" + this.paintTexture);
                     }
                     
                     if (Keyboard.getEventKey() == Keyboard.KEY_COMMA) {
                     	if (this.paintTexture != 1)
                         	this.paintTexture -= 1;
+                    		this.paintTextureString = ("block selected:" + this.paintTexture);
                     }
                     if (Keyboard.getEventKey() == 21) {
                         this.yMouseAxis *= -1;
