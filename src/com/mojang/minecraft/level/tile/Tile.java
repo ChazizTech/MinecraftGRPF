@@ -90,7 +90,7 @@ public class Tile
         RedCloth = new ClothRed(26);
         Bob = new BobFur(27);
         BlueGuy = new BlueGuy(28);
-        BlackMud = new BlackMud(29)
+        BlackMud = new DarkMud(29);
     }
     
     protected Tile(final int id) {
