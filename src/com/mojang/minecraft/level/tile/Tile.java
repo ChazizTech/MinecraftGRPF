@@ -47,6 +47,8 @@ public class Tile
     public static final Tile OrangeCloth;
     public static final Tile RedCloth;
     public static final Tile Bob;
+    public static final Tile BlueGuy;
+    public static final Tile BlackMud;
     public int tex;
     public final int id;
     protected float xx0;
@@ -87,6 +89,8 @@ public class Tile
         OrangeCloth = new ClothOrange(25);
         RedCloth = new ClothRed(26);
         Bob = new BobFur(27);
+        BlueGuy = new BlueGuy(28);
+        BlackMud = new BlackMud(29)
     }
     
     protected Tile(final int id) {
