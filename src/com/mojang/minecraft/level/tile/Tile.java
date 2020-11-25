@@ -50,6 +50,7 @@ public class Tile
     public static final Tile BlueGuy;
     public static final Tile BlackMud;
     public static final Tile Glass;
+    public static final Tile DarkGlass;
     public int tex;
     public final int id;
     protected float xx0;
@@ -93,6 +94,7 @@ public class Tile
         BlueGuy = new BlueGuy(28);
         BlackMud = new DarkMud(29);
         Glass = new Glass(30);
+        DarkGlass = new GlassDark(31);
     }
     
     protected Tile(final int id) {

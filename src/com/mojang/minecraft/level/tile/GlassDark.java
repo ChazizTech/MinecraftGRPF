@@ -7,11 +7,11 @@ package com.mojang.minecraft.level.tile;
 import java.util.Random;
 import com.mojang.minecraft.level.Level;
 
-public class Glass extends Tile
+public class GlassDark extends Tile
 {
-    protected Glass(final int id) {
+    protected GlassDark(final int id) {
         super(id);
-        this.tex = 49;
+        this.tex = 50;
         //this.setTicking(true);
     }
     
@@ -25,7 +25,7 @@ public class Glass extends Tile
     
     @Override
     public boolean blocksLight() {
-        return false;
+        return true;
     }
     
     @Override
