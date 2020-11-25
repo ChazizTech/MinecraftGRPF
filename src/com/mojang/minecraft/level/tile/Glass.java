@@ -18,9 +18,9 @@ public class Glass extends Tile
     @Override
     public void tick(final Level level, final int x, final int y, final int z, final Random random) {
         final int below = level.getTile(x, y - 1, z);
-        if (!level.isLit(x, y, z) || (below != Tile.dirt.id && below != Tile.grass.id)) {
-            level.setTile(x, y, z, 0);
-        }
+        //if (!level.isLit(x, y, z) || (below != Tile.dirt.id && below != Tile.grass.id)) {
+        //    level.setTile(x, y, z, 0);
+        //}
     }
     
     @Override
