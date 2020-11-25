@@ -11,7 +11,7 @@ public class ClothLime extends Tile
 {
     protected ClothLime(final int id) {
         super(id);
-        this.tex = 68;
+        this.tex = 67;
         //this.setTicking(true);
     }
     
