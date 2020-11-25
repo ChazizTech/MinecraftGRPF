@@ -365,7 +365,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
 //                    }
                   
                     if (Keyboard.getEventKey() == Keyboard.KEY_PERIOD) {
-                    	if (this.paintTexture != 26)
+                    	if (this.paintTexture != 27)
                             this.paintTexture += 1;
                     		this.paintTextureString = ("block selected:" + this.paintTexture);
                     }

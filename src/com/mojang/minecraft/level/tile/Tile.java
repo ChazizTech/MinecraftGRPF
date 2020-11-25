@@ -85,8 +85,8 @@ public class Tile
         GreenLimeCloth = new ClothLime(23);
         TealCloth = new ClothLime(24);
         OrangeCloth = new ClothOrange(25);
-        RedCloth = new ClothRed(25);
-        Bob = new BobFur(26);
+        RedCloth = new ClothRed(26);
+        Bob = new BobFur(27);
     }
     
     protected Tile(final int id) {
