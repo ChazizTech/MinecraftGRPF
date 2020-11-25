@@ -345,27 +345,27 @@ public class Minecraft implements Runnable, LevelLoaderListener
                     if (Keyboard.getEventKey() == 19) {
                         this.player.resetPos();
                     }
-                    if (Keyboard.getEventKey() == 2) {
-                        this.paintTexture = 1; //rock (stone)
-                    }
-                    if (Keyboard.getEventKey() == 3) {
-                        this.paintTexture = 3; //dirt
-                    }
-                    if (Keyboard.getEventKey() == 4) {
-                        this.paintTexture = 4; //stoneBricks
-                    }
-                    if (Keyboard.getEventKey() == 5) {
-                        this.paintTexture = 5; //wood
-                    }
-                    if (Keyboard.getEventKey() == 7) {
-                        this.paintTexture = 6; //non-functional bush
-                    }
-                    if (Keyboard.getEventKey() == 8) {
-                        this.paintTexture = 12;  //white cloth
-                    }
+//                    if (Keyboard.getEventKey() == 2) {
+//                        this.paintTexture = 1; //rock (stone)
+//                    }
+//                    if (Keyboard.getEventKey() == 3) {
+//                        this.paintTexture = 3; //dirt
+//                    }
+//                    if (Keyboard.getEventKey() == 4) {
+//                        this.paintTexture = 4; //stoneBricks
+//                    }
+//                    if (Keyboard.getEventKey() == 5) {
+//                        this.paintTexture = 5; //wood
+//                    }
+//                    if (Keyboard.getEventKey() == 7) {
+//                        this.paintTexture = 6; //non-functional bush
+//                    }
+//                    if (Keyboard.getEventKey() == 8) {
+//                        this.paintTexture = 12;  //white cloth
+//                    }
                   
                     if (Keyboard.getEventKey() == Keyboard.KEY_PERIOD) {
-                    	if (this.paintTexture != 20)
+                    	if (this.paintTexture != 26)
                             this.paintTexture += 1;
                     		this.paintTextureString = ("block selected:" + this.paintTexture);
                     }
