@@ -51,6 +51,9 @@ public class Tile
     public static final Tile BlackMud;
     public static final Tile Glass;
     public static final Tile DarkGlass;
+    public static final Tile Gold;
+    public static final Tile Diamond;
+    public static final Tile Iron;
     public int tex;
     public final int id;
     protected float xx0;
@@ -95,6 +98,9 @@ public class Tile
         BlackMud = new DarkMud(29);
         Glass = new Glass(30);
         DarkGlass = new GlassDark(31);
+        Gold = new GoldBlock(32);
+        Diamond = new DiamondBlock(33);
+        Iron = new IronBlock(34);
     }
     
     protected Tile(final int id) {

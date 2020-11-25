@@ -365,7 +365,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
 //                    }
                   
                     if (Keyboard.getEventKey() == Keyboard.KEY_PERIOD) {
-                    	if (this.paintTexture != 30)
+                    	if (this.paintTexture != 34) //prevents game from crashing if user goes above the last available block.
                             this.paintTexture += 1;
                     		this.paintTextureString = ("block selected:" + this.paintTexture);
                     }
