@@ -98,7 +98,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         this.levelGen = new LevelGen(this);
         this.running = false;
         this.fpsString = "";
-        this.paintTextureString = "block selected:1";
+        this.paintTextureString = "Block Selected: 1";
         this.mouseGrabbed = false;
         this.viewportBuffer = BufferUtils.createIntBuffer(16);
         this.selectBuffer = BufferUtils.createIntBuffer(2000);
