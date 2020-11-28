@@ -7,11 +7,11 @@ package com.mojang.minecraft.level.tile;
 import java.util.Random;
 import com.mojang.minecraft.level.Level;
 
-public class BobFur extends Tile
+public class CoalOre extends Tile
 {
-    protected BobFur(final int id) {
+    protected CoalOre(final int id) {
         super(id);
-        this.tex = 33;
+        this.tex = 32;
         //this.setTicking(true);
     }
     

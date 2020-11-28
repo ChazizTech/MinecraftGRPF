@@ -54,6 +54,7 @@ public class Tile
     public static final Tile Gold;
     public static final Tile Diamond;
     public static final Tile Iron;
+    public static final Tile CoalOre;
     public int tex;
     public final int id;
     protected float xx0;
@@ -101,6 +102,7 @@ public class Tile
         Gold = new GoldBlock(32);
         Diamond = new DiamondBlock(33);
         Iron = new IronBlock(34);
+        CoalOre = new CoalOre(35);
     }
     
     protected Tile(final int id) {
