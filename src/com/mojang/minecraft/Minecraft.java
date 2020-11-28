@@ -73,7 +73,6 @@ public class Minecraft implements Runnable, LevelLoaderListener
     private LevelGen levelGen;
     private volatile boolean running;
     private String fpsString;
-    private String cordString;
     private boolean mouseGrabbed;
     private IntBuffer viewportBuffer;
     private IntBuffer selectBuffer;
