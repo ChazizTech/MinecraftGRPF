@@ -11,7 +11,7 @@ public class CoalOre extends Tile
 {
     protected CoalOre(final int id) {
         super(id);
-        this.tex = 32;
+        this.tex = 34;
         //this.setTicking(true);
     }
     

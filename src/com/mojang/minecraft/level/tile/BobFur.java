@@ -11,7 +11,7 @@ public class BobFur extends Tile
 {
     protected BobFur(final int id) {
         super(id);
-        this.tex = 33;
+        this.tex = 32;
         //this.setTicking(true);
     }
     
