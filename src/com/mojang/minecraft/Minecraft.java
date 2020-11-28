@@ -45,7 +45,7 @@ import com.mojang.minecraft.level.LevelLoaderListener;
 
 public class Minecraft implements Runnable, LevelLoaderListener
 {
-    public static final String VERSION_STRING = "0.1.0";
+    public static final String VERSION_STRING = "0.1.1";
     private boolean fullscreen;
     public int width;
     public int height;
