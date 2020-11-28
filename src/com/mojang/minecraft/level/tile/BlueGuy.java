@@ -11,7 +11,7 @@ public class BlueGuy extends Tile
 {
     protected BlueGuy(final int id) {
         super(id);
-        this.tex = 81;
+        this.tex = 33;
         //this.setTicking(true);
     }
     

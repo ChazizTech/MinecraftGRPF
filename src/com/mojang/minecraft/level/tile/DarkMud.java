@@ -11,7 +11,7 @@ public class DarkMud extends Tile
 {
     protected DarkMud(final int id) {
         super(id);
-        this.tex = 96;
+        this.tex = 35;
         //this.setTicking(true);
     }
     
