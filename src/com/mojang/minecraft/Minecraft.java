@@ -132,7 +132,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         else {
             Display.setDisplayMode(new DisplayMode(this.width, this.height));
         }
-        Display.setTitle("MinecraftGRPF 0.1.0b");
+        Display.setTitle("MinecraftGRPF 0.1.0b_01");
         try {
             Display.create();
         }
@@ -367,13 +367,13 @@ public class Minecraft implements Runnable, LevelLoaderListener
                     if (Keyboard.getEventKey() == Keyboard.KEY_PERIOD) {
                     	if (this.paintTexture != 34) //prevents game from crashing if user goes above the last available block.
                             this.paintTexture += 1;
-                    		this.paintTextureString = ("block selected:" + this.paintTexture);
+                    		this.paintTextureString = ("Block Selected :" + this.paintTexture);
                     }
                     
                     if (Keyboard.getEventKey() == Keyboard.KEY_COMMA) {
                     	if (this.paintTexture != 1)
                         	this.paintTexture -= 1;
-                    		this.paintTextureString = ("block selected:" + this.paintTexture);
+                    		this.paintTextureString = ("Block Selected:" + this.paintTexture);
                     }
                     if (Keyboard.getEventKey() == 21) {
                         this.yMouseAxis *= -1;
@@ -644,7 +644,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         this.checkGlError("GUI: Draw selected");
         this.font.drawShadow("MinecraftGRPF 0.1.0b_01", 2, 2, 16777215);
         this.font.drawShadow(this.fpsString, 2, 12, 16777215);
-        this.font.drawShadow("Test version", 2, 22, 16777215);
+        //this.font.drawShadow("Early Developement", 2, 22, 16777215);
         this.font.drawShadow(this.paintTextureString, 2, 52, 16777215);
         this.checkGlError("GUI: Draw text");
         final int wc = screenWidth / 2;
