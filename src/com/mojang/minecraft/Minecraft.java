@@ -131,7 +131,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         else {
             Display.setDisplayMode(new DisplayMode(this.width, this.height));
         }
-        Display.setTitle("MinecraftGRPF 0.1.0b_01");
+        Display.setTitle("MinecraftGRPF 0.1.1a");
         try {
             Display.create();
         }
@@ -641,7 +641,7 @@ public class Minecraft implements Runnable, LevelLoaderListener
         GL11.glDisable(3553);
         GL11.glPopMatrix();
         this.checkGlError("GUI: Draw selected");
-        this.font.drawShadow("MinecraftGRPF 0.1.0b_01", 2, 2, 16777215);
+        this.font.drawShadow("MinecraftGRPF 0.1.1a", 2, 2, 16777215);
         this.font.drawShadow(this.fpsString, 2, 12, 16777215);
         //this.font.drawShadow("Early Developement", 2, 22, 16777215);
         this.font.drawShadow(this.paintTextureString, 2, 52, 16777215);
