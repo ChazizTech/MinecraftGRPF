@@ -7,11 +7,11 @@ package com.mojang.minecraft.level.tile;
 import java.util.Random;
 import com.mojang.minecraft.level.Level;
 
-public class DarkMud extends Tile
+public class IronOre extends Tile
 {
-    protected DarkMud(final int id) {
+    protected IronOre(final int id) {
         super(id);
-        this.tex = 35;
+        this.tex = 33;
         //this.setTicking(true);
     }
     

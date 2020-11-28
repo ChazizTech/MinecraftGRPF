@@ -94,9 +94,9 @@ public class Tile
         TealCloth = new ClothLime(24);
         OrangeCloth = new ClothOrange(25);
         RedCloth = new ClothRed(26);
-        Bob = new BobFur(27);
-        BlueGuy = new BlueGuy(28);
-        BlackMud = new DarkMud(29);
+        Bob = new GoldOre(27);
+        BlueGuy = new IronOre(28);
+        BlackMud = new DiamondOre(29);
         Glass = new Glass(30);
         DarkGlass = new GlassDark(31);
         Gold = new GoldBlock(32);
