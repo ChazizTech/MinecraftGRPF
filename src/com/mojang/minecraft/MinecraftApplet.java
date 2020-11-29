@@ -4,9 +4,10 @@
 
 package com.mojang.minecraft;
 
-import java.awt.*; 
-import javax.swing.*; 
-import java.awt.event.*; 
+import java.awt.Component;
+import java.awt.LayoutManager;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
 import java.applet.Applet;
 
 public class MinecraftApplet extends Applet
@@ -14,7 +15,6 @@ public class MinecraftApplet extends Applet
     private Canvas canvas;
     private Minecraft minecraft;
     private Thread thread;
-    static JMenuBar mb; 
     
     public MinecraftApplet() {
         this.thread = null;
@@ -35,7 +35,7 @@ public class MinecraftApplet extends Applet
                 super.removeNotify();
             }
         };
-        this.minecraft = new Minecraft(this.canvas, this.getWidth(), this.getHeight(), true);
+        this.minecraft = new Minecraft(this.canvas, this.getWidth(), this.getHeight(), false);
         this.minecraft.appletMode = true;
         this.setLayout(new BorderLayout());
         this.add(this.canvas, "Center");
