@@ -46,9 +46,9 @@ public class Tile
     public static final Tile GreenLimeCloth;
     public static final Tile OrangeCloth;
     public static final Tile RedCloth;
-    public static final Tile Bob;
-    public static final Tile BlueGuy;
-    public static final Tile BlackMud;
+    public static final Tile GoldOre;
+    public static final Tile IronOre;
+    public static final Tile DiamondOre;
     public static final Tile Glass;
     public static final Tile DarkGlass;
     public static final Tile Gold;
@@ -94,9 +94,9 @@ public class Tile
         TealCloth = new ClothTeal(24);
         OrangeCloth = new ClothOrange(25);
         RedCloth = new ClothRed(26);
-        Bob = new GoldOre(27);
-        BlueGuy = new IronOre(28);
-        BlackMud = new DiamondOre(29);
+        GoldOre = new GoldOre(27);
+        IronOre = new IronOre(28);
+        DiamondOre = new DiamondOre(29);
         Glass = new Glass(30);
         DarkGlass = new GlassDark(31);
         Gold = new GoldBlock(32);
