@@ -9,12 +9,15 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mojang.minecraft.gui.Font;
 import com.mojang.minecraft.Minecraft;
 import com.mojang.minecraft.level.LevelIO;
+
 
 public class PauseScreen extends Screen
 {
     private List<Button> buttons;
+    public Font font;
     
     public PauseScreen() {
         this.buttons = new ArrayList<Button>();
