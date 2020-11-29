@@ -4,10 +4,9 @@
 
 package com.mojang.minecraft;
 
-import java.awt.Component;
-import java.awt.LayoutManager;
-import java.awt.BorderLayout;
-import java.awt.Canvas;
+import java.awt.*; 
+import javax.swing.*; 
+import java.awt.event.*; 
 import java.applet.Applet;
 
 public class MinecraftApplet extends Applet
