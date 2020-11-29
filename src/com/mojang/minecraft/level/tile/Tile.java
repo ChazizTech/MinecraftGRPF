@@ -91,7 +91,7 @@ public class Tile
         YellCloth = new ClothYellow(21);
         GreenCloth = new ClothGreen(22);
         GreenLimeCloth = new ClothLime(23);
-        TealCloth = new ClothLime(24);
+        TealCloth = new ClothTeal(24);
         OrangeCloth = new ClothOrange(25);
         RedCloth = new ClothRed(26);
         Bob = new GoldOre(27);
