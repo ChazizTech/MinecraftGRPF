@@ -29,7 +29,13 @@ public class Glass extends Tile
     }
     
     @Override
+    protected boolean shouldRenderFace(final Level level, final int x, final int y, final int z, final int layer, final int face) {
+        final int id = level.getTile(x, y, z);
+        return id != this.id && super.shouldRenderFace(level, x, y, z, -1, face);
+    }
+    
+    @Override
     public boolean isSolid() {
-        return true;
+        return false;
     }
 }
