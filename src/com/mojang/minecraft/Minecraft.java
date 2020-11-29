@@ -17,7 +17,7 @@ import java.io.OutputStream;
 import java.io.FileOutputStream;
 import org.lwjgl.util.glu.GLU;
 import java.io.IOException;
-import com.mojang.minecraft.character.Zombie;
+//import com.mojang.minecraft.character.Zombie;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.File;
@@ -44,7 +44,7 @@ import java.nio.FloatBuffer;
 import com.mojang.minecraft.level.LevelLoaderListener;
 
 public class Minecraft implements Runnable, LevelLoaderListener {
-	public static final String VERSION_STRING = "0.1.1";
+	public static final String VERSION_STRING = "0.1.1a_preview";
 	private boolean fullscreen;
 	public int width;
 	public int height;
@@ -130,7 +130,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		} else {
 			Display.setDisplayMode(new DisplayMode(this.width, this.height));
 		}
-		Display.setTitle("MinecraftGRPF 0.1.1a");
+		Display.setTitle("MinecraftGRPF " + VERSION_STRING);
 		try {
 			Display.create();
 		} catch (LWJGLException e) {
@@ -161,7 +161,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		final IntBuffer imgData = BufferUtils.createIntBuffer(256);
 		imgData.clear().limit(256);
 		GL11.glViewport(0, 0, this.width, this.height);
-		this.setScreen(new MenuScreen());
+		//this.setScreen(new MenuScreen());
 		Minecraft.level = new Level();
 		boolean success = false;
 		try {
@@ -181,12 +181,12 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.levelRenderer = new LevelRenderer(Minecraft.level, this.textures);
 		this.player = new Player(Minecraft.level);
 		this.particleEngine = new ParticleEngine(Minecraft.level, this.textures);
-		for (int i = 0; i < 10; ++i) {
-			final Zombie zombie = new Zombie(Minecraft.level, this.textures,
-					128.0f, 0.0f, 128.0f);
-			zombie.resetPos();
-			this.entities.add(zombie);
-		}
+//		for (int i = 0; i < 10; ++i) {
+//			final Zombie zombie = new Zombie(Minecraft.level, this.textures,
+//					128.0f, 0.0f, 128.0f);
+//			zombie.resetPos();
+//			this.entities.add(zombie);
+//		}
 		if (this.appletMode) {
 			try {
 				this.emptyCursor = new Cursor(16, 16, 0, 0, 1, imgData,
@@ -365,11 +365,11 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 					if (Keyboard.getEventKey() == 21) {
 						this.yMouseAxis *= -1;
 					}
-					if (Keyboard.getEventKey() == 34) {
-						this.entities.add(new Zombie(Minecraft.level,
-								this.textures, this.player.x, this.player.y,
-								this.player.z));
-					}
+//					if (Keyboard.getEventKey() == 34) {
+//						this.entities.add(new Zombie(Minecraft.level,
+//								this.textures, this.player.x, this.player.y,
+//								this.player.z));
+//					}
 					if (Keyboard.getEventKey() != 33) {
 						continue;
 					}
@@ -516,12 +516,12 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.checkGlError("Rendered particles");
 		this.setupFog(1);
 		this.levelRenderer.render(this.player, 1);
-		for (int i = 0; i < this.entities.size(); ++i) {
-			final Entity zombie = this.entities.get(i);
-			if (!zombie.isLit() && frustum.isVisible(zombie.bb)) {
-				this.entities.get(i).render(a);
-			}
-		}
+//		for (int i = 0; i < this.entities.size(); ++i) {
+//			final Entity zombie = this.entities.get(i);
+//			if (!zombie.isLit() && frustum.isVisible(zombie.bb)) {
+//				this.entities.get(i).render(a);
+//			}
+//		}
 		this.particleEngine.render(this.player, a, 1);
 		this.levelRenderer.renderSurroundingGround();
 		if (this.hitResult != null) {
@@ -639,7 +639,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		GL11.glDisable(3553);
 		GL11.glPopMatrix();
 		this.checkGlError("GUI: Draw selected");
-		this.font.drawShadow("MinecraftGRPF 0.1.1a", 2, 2, 16777215);
+		this.font.drawShadow("MinecraftGRPF " + VERSION_STRING, 2, 2, 16777215);
 		this.font.drawShadow(this.fpsString, 2, 12, 16777215);
 		this.font.drawShadow("Early Development", 2, 22, 16777215);
 		this.font.drawShadow(this.paintTextureString, 2, 52, 16777215);
