@@ -372,7 +372,6 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 														// above the last
 														// available block.
 							this.paintTexture += 1;
-						this.font.drawShadow("MinecraftGRPF 0.1.1a", 7, 6, 16777215);
 						this.paintTextureString = ("Block Selected: " + this.paintTexture);
 					}
 
@@ -681,10 +680,6 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 			this.screen.render(xMouse, yMouse);
 		}
 	}
-	
-    private void drawPauseText() {
-    	this.font.drawShadow("TESTY TEST, HELLO WORLD DUMBASS", 2, 22, 16777215);
-    }
 
 	private void setupFog(final int i) {
 		final Tile currentTile = Tile.tiles[Minecraft.level.getTile(
