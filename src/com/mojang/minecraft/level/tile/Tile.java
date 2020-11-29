@@ -55,6 +55,7 @@ public class Tile
     public static final Tile Diamond;
     public static final Tile Iron;
     public static final Tile CoalOre;
+    public static final Tile DropDaBomb; //testing block
     public int tex;
     public final int id;
     protected float xx0;
@@ -103,6 +104,7 @@ public class Tile
         Diamond = new DiamondBlock(33);
         Iron = new IronBlock(34);
         CoalOre = new CoalOre(35);
+        DropDaBomb = new YvanEhtNioj(35); //testing block
     }
     
     protected Tile(final int id) {
