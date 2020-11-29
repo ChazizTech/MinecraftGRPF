@@ -42,9 +42,6 @@ import com.mojang.minecraft.level.LevelRenderer;
 import com.mojang.minecraft.level.Level;
 import java.nio.FloatBuffer;
 import com.mojang.minecraft.level.LevelLoaderListener;
-import java.awt.*; 
-import javax.swing.*; 
-import java.awt.event.*; 
 
 public class Minecraft implements Runnable, LevelLoaderListener {
 	public static final String VERSION_STRING = "0.1.1";
