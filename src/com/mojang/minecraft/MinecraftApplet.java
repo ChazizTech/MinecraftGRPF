@@ -14,6 +14,7 @@ public class MinecraftApplet extends Applet
     private Canvas canvas;
     private Minecraft minecraft;
     private Thread thread;
+    static JMenuBar mb; 
     
     public MinecraftApplet() {
         this.thread = null;
@@ -34,7 +35,7 @@ public class MinecraftApplet extends Applet
                 super.removeNotify();
             }
         };
-        this.minecraft = new Minecraft(this.canvas, this.getWidth(), this.getHeight(), false);
+        this.minecraft = new Minecraft(this.canvas, this.getWidth(), this.getHeight(), true);
         this.minecraft.appletMode = true;
         this.setLayout(new BorderLayout());
         this.add(this.canvas, "Center");
