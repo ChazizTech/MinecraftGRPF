@@ -22,6 +22,8 @@ public class PauseScreen extends Screen
     
     @Override
     public void init() {
+    	attemptSaveLevel();
+    	System.out.println("Level saved? [PAUSE MENU]");
         this.buttons.add(new Button(0, this.width / 2 - 100, this.height / 4 + 0, 200, 20, "Generate new level"));
         this.buttons.add(new Button(1, this.width / 2 - 100, this.height / 4 + 32, 200, 20, "Save level.."));
         this.buttons.add(new Button(2, this.width / 2 - 100, this.height / 4 + 64, 200, 20, "Load level.."));
@@ -55,7 +57,7 @@ public class PauseScreen extends Screen
         	attemptSaveLevel();
         	this.minecraft.setScreen(null);
             this.minecraft.grabMouse();
-            System.out.println("Level saved?");
+            System.out.println("Level saved? [PAUSE MENU BUTTON]");
         }
         if (button.id == 3) {
             this.minecraft.setScreen(null);
