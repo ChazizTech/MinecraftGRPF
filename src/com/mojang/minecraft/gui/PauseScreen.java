@@ -28,7 +28,7 @@ public class PauseScreen extends Screen
         //this.buttons.add(new Button(1, this.width / 2 - 100, this.height / 4 + 32, 200, 20, "Save level.."));
         //this.buttons.add(new Button(2, this.width / 2 - 100, this.height / 4 + 64, 200, 20, "Load level.."));
         this.buttons.add(new Button(3, this.width / 2 - 100, this.height / 4 + 96, 100, 20, "Back to game"));
-        this.buttons.add(new Button(4, this.width / 2 - 100, this.height / 8 + 128, 100, 20, "Exit"));
+        this.buttons.add(new Button(4, this.width / 2 - 25, this.height / 4 + 128, 100, 20, "Exit"));
     }
     
     @Override
