@@ -104,7 +104,7 @@ public class Tile
         Diamond = new DiamondBlock(33);
         Iron = new IronBlock(34);
         CoalOre = new CoalOre(35);
-        DropDaBomb = new YvanEhtNioj(35); //testing block
+        DropDaBomb = new YvanEhtNioj(36); //testing block
     }
     
     protected Tile(final int id) {
