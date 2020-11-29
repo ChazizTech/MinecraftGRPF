@@ -25,10 +25,10 @@ public class PauseScreen extends Screen
     	attemptSaveLevel();
     	System.out.println("Level saved? [PAUSE MENU]");
         this.buttons.add(new Button(0, this.width / 2 - 100, this.height / 4 + 0, 200, 20, "Generate new level"));
-        this.buttons.add(new Button(1, this.width / 2 - 100, this.height / 4 + 32, 200, 20, "Save level.."));
-        this.buttons.add(new Button(2, this.width / 2 - 100, this.height / 4 + 64, 200, 20, "Load level.."));
-        this.buttons.add(new Button(3, this.width / 2 - 100, this.height / 4 + 96, 200, 20, "Back to game"));
-        this.buttons.add(new Button(4, this.width / 2 - 100, this.height / 4 + 128, 200, 20, "Exit"));
+        //this.buttons.add(new Button(1, this.width / 2 - 100, this.height / 4 + 32, 200, 20, "Save level.."));
+        //this.buttons.add(new Button(2, this.width / 2 - 100, this.height / 4 + 64, 200, 20, "Load level.."));
+        this.buttons.add(new Button(3, this.width / 2 - 100, this.height / 4 + 96, 100, 20, "Back to game"));
+        this.buttons.add(new Button(4, this.width / 2 - 100, this.height / 4 + 96, 100, 40, "Exit"));
     }
     
     @Override
