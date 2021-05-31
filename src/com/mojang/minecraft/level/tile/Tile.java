@@ -65,6 +65,8 @@ public class Tile
     protected float yy1;
     protected float zz1;
     
+    //todo: clean this fucking shit
+    
     static {
         tiles = new Tile[256];
         shouldTick = new boolean[256];

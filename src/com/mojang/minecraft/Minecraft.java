@@ -4,6 +4,7 @@
 
 package com.mojang.minecraft;
 
+import javax.swing.*;
 import com.mojang.minecraft.renderer.Tesselator;
 import com.mojang.minecraft.renderer.Frustum;
 import com.mojang.minecraft.phys.AABB;
@@ -56,6 +57,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 	private Player player;
 	private int paintTexture;
 	private String paintTextureString;
+	private String nameLevel;
 	private ParticleEngine particleEngine;
 	public User user;
 	private ArrayList<Entity> entities;
@@ -98,6 +100,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.running = false;
 		this.fpsString = "";
 		this.paintTextureString = "Block Selected: 1";
+		this.nameLevel = "A Nice World";
 		this.mouseGrabbed = false;
 		this.viewportBuffer = BufferUtils.createIntBuffer(16);
 		this.selectBuffer = BufferUtils.createIntBuffer(2000);
@@ -176,7 +179,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		}
 		if (!success) {
 			this.levelGen.generateLevel(Minecraft.level, this.user.name, 256,
-					256, 64);
+					256, 64, nameLevel);
 		}
 		this.levelRenderer = new LevelRenderer(Minecraft.level, this.textures);
 		this.player = new Player(Minecraft.level);
@@ -639,10 +642,10 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		GL11.glDisable(3553);
 		GL11.glPopMatrix();
 		this.checkGlError("GUI: Draw selected");
-		this.font.drawShadow("MinecraftGRPF " + VERSION_STRING, 2, 2, 16777215);
+		this.font.drawShadow("Gamerappa's Minecraft " + VERSION_STRING, 2, 2, 16777215);
 		this.font.drawShadow(this.fpsString, 2, 12, 16777215);
-		this.font.drawShadow("Early Development", 2, 22, 16777215);
 		this.font.drawShadow(this.paintTextureString, 2, 52, 16777215);
+		this.font.drawShadow(this.nameLevel, 2, 22, 16777215);
 		this.checkGlError("GUI: Draw text");
 		final int wc = screenWidth / 2;
 		final int hc = screenHeight / 2;
@@ -754,10 +757,19 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		}
 	}
 
+	public class OptionPaneExample {  
+		JFrame f;  
+		OptionPaneExample(){  
+		    f=new JFrame();   
+		    nameLevel=JOptionPane.showInputDialog(f,"Enter Name");      
+		}
+	}
+	
 	// Level generation used by Pause Screen.
 	public void generateNewLevel() {
+		new OptionPaneExample();
 		this.levelGen.generateLevel(Minecraft.level, this.user.name, 256, 256,
-				64);
+				64, nameLevel);
 		this.player.resetPos();
 		for (int i = 0; i < this.entities.size(); ++i) {
 			this.entities.remove(i--);

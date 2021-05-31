@@ -27,7 +27,7 @@ public class LevelGen
         this.levelLoaderListener = levelLoaderListener;
     }
     
-    public boolean generateLevel(final Level level, final String userName, final int width, final int height, final int depth) {
+    public boolean generateLevel(final Level level, final String userName, final int width, final int height, final int depth, final String levelName) {
         this.levelLoaderListener.beginLevelLoading("Generating level");
         this.width = width;
         this.height = height;
@@ -46,7 +46,7 @@ public class LevelGen
         level.setData(width, depth, height, this.blocks);
         level.createTime = System.currentTimeMillis();
         level.creator = userName;
-        level.name = "A Nice World";
+        level.name = levelName;
         return true;
     }
     

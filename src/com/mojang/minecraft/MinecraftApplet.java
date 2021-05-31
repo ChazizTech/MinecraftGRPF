@@ -35,7 +35,7 @@ public class MinecraftApplet extends Applet
                 super.removeNotify();
             }
         };
-        this.minecraft = new Minecraft(this.canvas, this.getWidth(), this.getHeight(), false);
+        this.minecraft = new Minecraft(this.canvas, 854, 480, false);
         this.minecraft.appletMode = true;
         this.setLayout(new BorderLayout());
         this.add(this.canvas, "Center");
