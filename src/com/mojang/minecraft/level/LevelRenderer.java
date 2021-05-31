@@ -117,6 +117,20 @@ public class LevelRenderer implements LevelListener
                 a.vertexUV((float)i, n, (float)(j + 512), i * n2 + float1, (j + 512) * n2);
             }
         }
+        a.end();
+        GL11.glDisable(3553);
+        a.begin();
+        a.tex(0.8f, 1.0f);
+        n = (float)(this.level.depth + 10);
+        for (int k = -2048; k < this.level.width + 2048; k += 512) {
+            for (int i = -2048; i < this.level.height + 2048; i += 512) {
+                a.vertex((float)k, n, (float)i);
+                a.vertex((float)(k + 512), n, (float)i);
+                a.vertex((float)(k + 512), n, (float)(i + 512));
+                a.vertex((float)k, n, (float)(i + 512));
+            }
+        }
+        a.end();
     }
     
     public List<Chunk> getAllDirtyChunks() {
