@@ -95,28 +95,29 @@ public class LevelRenderer implements LevelListener
         }
     }
     
-    //clouds do not work because deobfuscating is hard.
-/*    public final void a(float n) {
+    public final void a(float float1) {
         GL11.glEnable(3553);
         GL11.glBindTexture(3553, this.textures.loadTexture("/clouds.png", 9728));
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        final c a = com.mojang.minecraft.Textures.c.a;
+        final Tesselator a = Tesselator.instance;
+        float n = 0.0f;
         final float n2 = 4.8828125E-4f;
-        final float n3 = (float)(this.a.depth + 2);
-        n = (this.f + n) * n2 * 0.03f;
-        a.b();
-        for (int i = -2048; i < this.a.width + 2048; i += 512) {
-            for (int j = -2048; j < this.a.height + 2048; j += 512) {
-                this.textures.loadTexture((float)i, n3, (float)(j + 512), i * n2 + n, (j + 512) * n2);
-                a.a((float)(i + 512), n3, (float)(j + 512), (i + 512) * n2 + n, (j + 512) * n2);
-                a.a((float)(i + 512), n3, (float)j, (i + 512) * n2 + n, j * n2);
-                a.a((float)i, n3, (float)j, i * n2 + n, j * n2);
-                a.a((float)i, n3, (float)j, i * n2 + n, j * n2);
-                a.a((float)(i + 512), n3, (float)j, (i + 512) * n2 + n, j * n2);
-                a.a((float)(i + 512), n3, (float)(j + 512), (i + 512) * n2 + n, (j + 512) * n2);
-                a.a((float)i, n3, (float)(j + 512), i * n2 + n, (j + 512) * n2);
+        n = (float)(this.level.depth + 2);
+        float1 = (this.c + float1) * n2 * 0.03f;
+        a.begin();
+        for (int i = -2048; i < this.level.width + 2048; i += 512) {
+            for (int j = -2048; j < this.level.height + 2048; j += 512) {
+                a.vertexUV((float)i, n, (float)(j + 512), i * n2 + float1, (j + 512) * n2);
+                a.vertexUV((float)(i + 512), n, (float)(j + 512), (i + 512) * n2 + float1, (j + 512) * n2);
+                a.vertexUV((float)(i + 512), n, (float)j, (i + 512) * n2 + float1, j * n2);
+                a.vertexUV((float)i, n, (float)j, i * n2 + float1, j * n2);
+                a.vertexUV((float)i, n, (float)j, i * n2 + float1, j * n2);
+                a.vertexUV((float)(i + 512), n, (float)j, (i + 512) * n2 + float1, j * n2);
+                a.vertexUV((float)(i + 512), n, (float)(j + 512), (i + 512) * n2 + float1, (j + 512) * n2);
+                a.vertexUV((float)i, n, (float)(j + 512), i * n2 + float1, (j + 512) * n2);
+            }
         }
-     }*/
+    }
     
     public List<Chunk> getAllDirtyChunks() {
         ArrayList<Chunk> dirty = null;

@@ -5,6 +5,8 @@
 package com.mojang.minecraft;
 
 import javax.swing.*;
+import java.awt.*;
+
 import com.mojang.minecraft.renderer.Tesselator;
 import com.mojang.minecraft.renderer.Frustum;
 import com.mojang.minecraft.phys.AABB;
@@ -12,7 +14,6 @@ import com.mojang.minecraft.level.tile.Tile;
 import com.mojang.minecraft.gui.PauseScreen;
 import com.mojang.minecraft.gui.MenuScreen;
 import com.mojang.minecraft.level.Chunk;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
@@ -36,7 +37,6 @@ import com.mojang.minecraft.gui.Screen;
 import com.mojang.minecraft.gui.Font;
 import com.mojang.minecraft.renderer.Textures;
 import org.lwjgl.input.Cursor;
-import java.awt.Canvas;
 import java.util.ArrayList;
 import com.mojang.minecraft.particle.ParticleEngine;
 import com.mojang.minecraft.level.LevelRenderer;
@@ -81,6 +81,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 	FloatBuffer lb;
 	private String title;
 
+	
 	public Minecraft(final Canvas parent, final int width, final int height,
 			final boolean fullscreen) {
 		this.fullscreen = false;
@@ -112,6 +113,22 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.height = height;
 		this.fullscreen = fullscreen;
 		this.textures = new Textures();
+		class mcMenu  
+		{  
+			mcMenu(){  
+		         Frame f= new Frame(nameLevel);  
+		         MenuBar mb=new MenuBar();  
+		         Menu menu=new Menu("Menu");
+		         MenuItem i1=new MenuItem("New Level");
+		         menu.add(i1); 
+		         mb.add(menu);  
+		         f.setMenuBar(mb);  
+		         f.setSize(400,100);  
+		         f.setLayout(null);  
+		         f.setVisible(true);  
+		}
+		}
+		new mcMenu();
 	}
 
 	public void init() throws LWJGLException, IOException {
@@ -220,7 +237,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 			System.exit(0);
 		}
 	}
-
+	
 	public void attemptSaveLevel() {
 		try {
 			Minecraft.levelIo.save(Minecraft.level, new FileOutputStream(
@@ -518,6 +535,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.particleEngine.render(this.player, a, 0);
 		this.checkGlError("Rendered particles");
 		this.setupFog(1);
+		this.levelRenderer.a(a);
 		this.levelRenderer.render(this.player, 1);
 //		for (int i = 0; i < this.entities.size(); ++i) {
 //			final Entity zombie = this.entities.get(i);
