@@ -45,7 +45,7 @@ import java.nio.FloatBuffer;
 import com.mojang.minecraft.level.LevelLoaderListener;
 
 public class Minecraft implements Runnable, LevelLoaderListener {
-	public static final String VERSION_STRING = "0.1.1a_preview";
+	public static final String VERSION_STRING = "0.1.1a";
 	private boolean fullscreen;
 	public int width;
 	public int height;
@@ -57,11 +57,11 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 	private Player player;
 	private int paintTexture;
 	private String paintTextureString;
-	private String nameLevel;
+	public static String nameLevel;
 	private ParticleEngine particleEngine;
 	public User user;
 	private ArrayList<Entity> entities;
-	private Canvas parent;
+	private static Canvas parent;
 	public boolean appletMode;
 	public volatile boolean pause;
 	private Cursor emptyCursor;
@@ -81,15 +81,13 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 	FloatBuffer lb;
 	private String title;
 
-	
-	public Minecraft(final Canvas parent, final int width, final int height,
-			final boolean fullscreen) {
+	public Minecraft(final Canvas parent, final int width, final int height, final boolean fullscreen) {
 		this.fullscreen = false;
 		this.fogColor0 = BufferUtils.createFloatBuffer(4);
 		this.fogColor1 = BufferUtils.createFloatBuffer(4);
 		this.timer = new Timer(20.0f);
 		this.paintTexture = 1;
-		this.user = new User("noname");
+		this.user = new User("Gamerappa");
 		this.entities = new ArrayList<Entity>();
 		this.appletMode = false;
 		this.pause = false;
@@ -101,34 +99,18 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.running = false;
 		this.fpsString = "";
 		this.paintTextureString = "Block Selected: 1";
-		this.nameLevel = "A Nice World";
+		Minecraft.nameLevel = "A Nice World";
 		this.mouseGrabbed = false;
 		this.viewportBuffer = BufferUtils.createIntBuffer(16);
 		this.selectBuffer = BufferUtils.createIntBuffer(2000);
 		this.hitResult = null;
 		this.lb = BufferUtils.createFloatBuffer(16);
 		this.title = "";
-		this.parent = parent;
+		Minecraft.parent = parent;
 		this.width = width;
 		this.height = height;
 		this.fullscreen = fullscreen;
 		this.textures = new Textures();
-		class mcMenu  
-		{  
-			mcMenu(){  
-		         Frame f= new Frame(nameLevel);  
-		         MenuBar mb=new MenuBar();  
-		         Menu menu=new Menu("Menu");
-		         MenuItem i1=new MenuItem("New Level");
-		         menu.add(i1); 
-		         mb.add(menu);  
-		         f.setMenuBar(mb);  
-		         f.setSize(400,100);  
-		         f.setLayout(null);  
-		         f.setVisible(true);  
-		}
-		}
-		new mcMenu();
 	}
 
 	public void init() throws LWJGLException, IOException {
@@ -141,8 +123,8 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.fogColor1.put(new float[] { (col1 >> 16 & 0xFF) / 255.0f,
 				(col1 >> 8 & 0xFF) / 255.0f, (col1 & 0xFF) / 255.0f, 1.0f });
 		this.fogColor1.flip();
-		if (this.parent != null) {
-			Display.setParent(this.parent);
+		if (Minecraft.parent != null) {
+			Display.setParent(Minecraft.parent);
 		} else if (this.fullscreen) {
 			Display.setFullscreen(true);
 			this.width = Display.getDisplayMode().getWidth();
@@ -150,7 +132,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		} else {
 			Display.setDisplayMode(new DisplayMode(this.width, this.height));
 		}
-		Display.setTitle("MinecraftGRPF " + VERSION_STRING);
+		Display.setTitle("Gamerappa's Minecraft " + VERSION_STRING + " - Welcome, " + User.name);
 		try {
 			Display.create();
 		} catch (LWJGLException e) {
@@ -195,7 +177,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 			success = false;
 		}
 		if (!success) {
-			this.levelGen.generateLevel(Minecraft.level, this.user.name, 256,
+			this.levelGen.generateLevel(Minecraft.level, User.name, 256,
 					256, 64, nameLevel);
 		}
 		this.levelRenderer = new LevelRenderer(Minecraft.level, this.textures);
@@ -535,7 +517,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.particleEngine.render(this.player, a, 0);
 		this.checkGlError("Rendered particles");
 		this.setupFog(1);
-		this.levelRenderer.a(a);
+		this.levelRenderer.clouds(a);
 		this.levelRenderer.render(this.player, 1);
 //		for (int i = 0; i < this.entities.size(); ++i) {
 //			final Entity zombie = this.entities.get(i);
@@ -599,7 +581,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 				if (this.pause) {
 					Thread.sleep(100L);
 				} else {
-					if (this.parent == null && Display.isCloseRequested()) {
+					if (Minecraft.parent == null && Display.isCloseRequested()) {
 						this.stop();
 					}
 					this.timer.advanceTime();
@@ -660,10 +642,14 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		GL11.glDisable(3553);
 		GL11.glPopMatrix();
 		this.checkGlError("GUI: Draw selected");
-		this.font.drawShadow("Gamerappa's Minecraft " + VERSION_STRING, 2, 2, 16777215);
-		this.font.drawShadow(this.fpsString, 2, 12, 16777215);
-		this.font.drawShadow(this.paintTextureString, 2, 52, 16777215);
-		this.font.drawShadow(this.nameLevel, 2, 22, 16777215);
+		// For some random reason, the text color uses BGR and not RGB.
+		// We should add a text color system later, in case we actually
+		// implement multiplayer. -Chaziz 5/31/2021
+		//this.font.drawShadow("Gamerappa's Minecraft", 2, 2, 16777215);
+		this.font.drawShadow(VERSION_STRING + " - " + this.fpsString, 2, 2, 16777215);
+		this.font.drawShadow(this.paintTextureString, 2, 12, 13948116);
+		this.font.drawShadow("User: " + User.name, 2, 212, 16764165); //yellow text
+		this.font.drawShadow("Level: " + Minecraft.nameLevel, 2, 222, 11528191); //blue text
 		this.checkGlError("GUI: Draw text");
 		final int wc = screenWidth / 2;
 		final int hc = screenHeight / 2;
@@ -775,18 +761,19 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		}
 	}
 
-	public class OptionPaneExample {  
+	public class inputLevelName {  
 		JFrame f;  
-		OptionPaneExample(){  
+		public inputLevelName(){  
 		    f=new JFrame();   
-		    nameLevel=JOptionPane.showInputDialog(f,"Enter Name");      
+		    nameLevel=JOptionPane.showInputDialog(f,"Enter name for level.");      
 		}
 	}
 	
+	
 	// Level generation used by Pause Screen.
 	public void generateNewLevel() {
-		new OptionPaneExample();
-		this.levelGen.generateLevel(Minecraft.level, this.user.name, 256, 256,
+		new inputLevelName();
+		this.levelGen.generateLevel(Minecraft.level, User.name, 256, 256,
 				64, nameLevel);
 		this.player.resetPos();
 		for (int i = 0; i < this.entities.size(); ++i) {

@@ -11,6 +11,8 @@ import java.io.DataInputStream;
 import java.util.zip.GZIPInputStream;
 import java.io.InputStream;
 
+import com.mojang.minecraft.Minecraft;
+
 public class LevelIO
 {
     private static final int MAGIC_NUMBER = 656127880;
@@ -29,12 +31,12 @@ public class LevelIO
         try {
             final DataInputStream dis = new DataInputStream(new GZIPInputStream(in));
             final int magic = dis.readInt();
-            if (magic != 656127880) {
+            if (magic != MAGIC_NUMBER) {
                 this.error = "Bad level file format";
                 return false;
             }
             final byte version = dis.readByte();
-            if (version > 1) {
+            if (version > CURRENT_VERSION) {
                 this.error = "Bad level file format";
                 return false;
             }
@@ -51,6 +53,9 @@ public class LevelIO
             level.name = name;
             level.creator = creator;
             level.createTime = createTime;
+            System.out.println("Level Loaded");
+            System.out.println(level.name);
+            Minecraft.nameLevel = level.name;
             return true;
         }
         catch (Exception e) {
@@ -90,8 +95,8 @@ public class LevelIO
     public void save(final Level level, final OutputStream out) {
         try {
             final DataOutputStream dos = new DataOutputStream(new GZIPOutputStream(out));
-            dos.writeInt(656127880);
-            dos.writeByte(1);
+            dos.writeInt(MAGIC_NUMBER);
+            dos.writeByte(CURRENT_VERSION);
             dos.writeUTF(level.name);
             dos.writeUTF(level.creator);
             dos.writeLong(level.createTime);

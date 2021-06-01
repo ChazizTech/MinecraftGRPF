@@ -6,9 +6,10 @@ package com.mojang.minecraft;
 
 public class User
 {
-    public String name;
+    public static String name;
     
     public User(final String name) {
-        this.name = name;
+        User.name = name;
+        System.out.println("Username is " + name);
     }
 }

@@ -95,7 +95,7 @@ public class LevelRenderer implements LevelListener
         }
     }
     
-    public final void a(float float1) {
+    public final void clouds(float float1) {
         GL11.glEnable(3553);
         GL11.glBindTexture(3553, this.textures.loadTexture("/clouds.png", 9728));
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);

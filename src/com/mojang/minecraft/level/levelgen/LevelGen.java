@@ -5,10 +5,13 @@
 package com.mojang.minecraft.level.levelgen;
 
 import java.util.ArrayList;
+
+import com.mojang.minecraft.Minecraft;
 import com.mojang.minecraft.level.tile.Tile;
 import com.mojang.minecraft.level.Level;
 import com.mojang.minecraft.level.PerlinNoiseFilter;
 import java.util.Random;
+
 import com.mojang.minecraft.level.LevelLoaderListener;
 
 public class LevelGen
@@ -39,7 +42,7 @@ public class LevelGen
         this.buildBlocks(heightMap);
         this.levelLoaderListener.levelLoadUpdate("Carving..");
         this.carveTunnels();
-        this.levelLoaderListener.levelLoadUpdate("Watering..");
+        this.levelLoaderListener.levelLoadUpdate("Flooding..");
         this.addWater();
         this.levelLoaderListener.levelLoadUpdate("Melting..");
         this.addLava();
@@ -47,6 +50,8 @@ public class LevelGen
         level.createTime = System.currentTimeMillis();
         level.creator = userName;
         level.name = levelName;
+        System.out.println("Level Generated -" + level.name);
+        Minecraft.nameLevel = level.name;
         return true;
     }
     
@@ -63,8 +68,6 @@ public class LevelGen
             for (int y = 0; y < d; ++y) {
                 for (int z = 0; z < h; ++z) {
                     final int dh = d / 2;
-                    //final int rh = d / 3;
-                    //final int i = (y * this.height + z) * this.width + x;
                     final int dh1 = heightmap1[x + z * this.width];
                     int dh2 = heightmap2[x + z * this.width];
                     final int cfh = cf[x + z * this.width];
