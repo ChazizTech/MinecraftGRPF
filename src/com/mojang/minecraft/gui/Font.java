@@ -24,6 +24,7 @@ public class Font
             img = ImageIO.read(Textures.class.getResourceAsStream(name));
         }
         catch (IOException e) {
+    		System.out.println("Font couldn't load");
             throw new RuntimeException(e);
         }
         final int w = img.getWidth();

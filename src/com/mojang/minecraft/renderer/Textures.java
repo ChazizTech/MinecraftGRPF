@@ -55,10 +55,11 @@ public class Textures
             pixels.put(newPixels);
             pixels.position(0).limit(newPixels.length);
             GLU.gluBuild2DMipmaps(3553, 6408, w, h, 6408, 5121, pixels);
+    		System.out.println("Loaded texture " + (resourceName));
             return id;
         }
         catch (IOException e) {
-            throw new RuntimeException("!!");
+            throw new RuntimeException("Couldn't load texture");
         }
     }
 }

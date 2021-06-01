@@ -82,6 +82,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 	private String title;
 
 	public Minecraft(final Canvas parent, final int width, final int height, final boolean fullscreen) {
+		System.out.println("Gamerappa's Minecraft has been launched.");
 		this.fullscreen = false;
 		this.fogColor0 = BufferUtils.createFloatBuffer(4);
 		this.fogColor1 = BufferUtils.createFloatBuffer(4);
@@ -114,6 +115,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 	}
 
 	public void init() throws LWJGLException, IOException {
+		System.out.println("Initializing Gamerappa's Minecraft Version " + VERSION_STRING);
 		final int col1 = 920330;
 		final float fr = 0.5f;
 		final float fg = 0.8f;
@@ -146,6 +148,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		Keyboard.create();
 		Mouse.create();
 		this.checkGlError("Pre startup");
+		System.out.println("Pre-startup");
 		GL11.glEnable(3553);
 		GL11.glShadeModel(7425);
 		GL11.glClearColor(fr, fg, fb, 0.0f);
@@ -159,24 +162,27 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		GL11.glLoadIdentity();
 		GL11.glMatrixMode(5888);
 		this.checkGlError("Startup");
+		System.out.println("Startup");
 		this.font = new Font("/default.gif", this.textures);
 		final IntBuffer imgData = BufferUtils.createIntBuffer(256);
 		imgData.clear().limit(256);
 		GL11.glViewport(0, 0, this.width, this.height);
 		//this.setScreen(new MenuScreen());
 		Minecraft.level = new Level();
+		System.out.println("Initalizing level.");
 		boolean success = false;
 		try {
 			success = Minecraft.levelIo.load(Minecraft.level,
 					new FileInputStream(new File("level.dat")));
 			if (!success) {
 				success = Minecraft.levelIo.loadLegacy(Minecraft.level,
-						new FileInputStream(new File("level.dat")));
+						new FileInputStream(new File("level.dat")));	
 			}
 		} catch (Exception e3) {
 			success = false;
 		}
 		if (!success) {
+			System.out.println("Save file doesn't exist.");
 			this.levelGen.generateLevel(Minecraft.level, User.name, 256,
 					256, 64, nameLevel);
 		}
@@ -198,6 +204,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 			}
 		}
 		this.checkGlError("Post startup");
+		System.out.println("Post-startup");
 	}
 
 	public void setScreen(final Screen screen) {
@@ -519,12 +526,12 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.setupFog(1);
 		this.levelRenderer.clouds(a);
 		this.levelRenderer.render(this.player, 1);
-//		for (int i = 0; i < this.entities.size(); ++i) {
-//			final Entity zombie = this.entities.get(i);
-//			if (!zombie.isLit() && frustum.isVisible(zombie.bb)) {
-//				this.entities.get(i).render(a);
-//			}
-//		}
+	//		for (int i = 0; i < this.entities.size(); ++i) {
+	//			final Entity zombie = this.entities.get(i);
+	//			if (!zombie.isLit() && frustum.isVisible(zombie.bb)) {
+	//				this.entities.get(i).render(a);
+	//			}
+	//		}
 		this.particleEngine.render(this.player, a, 1);
 		this.levelRenderer.renderSurroundingGround();
 		if (this.hitResult != null) {
@@ -645,7 +652,6 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		// For some random reason, the text color uses BGR and not RGB.
 		// We should add a text color system later, in case we actually
 		// implement multiplayer. -Chaziz 5/31/2021
-		//this.font.drawShadow("Gamerappa's Minecraft", 2, 2, 16777215);
 		this.font.drawShadow(VERSION_STRING + " - " + this.fpsString, 2, 2, 16777215);
 		this.font.drawShadow(this.paintTextureString, 2, 12, 13948116);
 		this.font.drawShadow("User: " + User.name, 2, 212, 16764165); //yellow text
@@ -762,9 +768,10 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 	}
 
 	public class inputLevelName {  
-		JFrame f;  
+		JFrame f;
 		public inputLevelName(){  
-		    f=new JFrame();   
+		    f=new JFrame();
+			System.out.println("A dialog asking for the level name should have opened.");
 		    nameLevel=JOptionPane.showInputDialog(f,"Enter name for level.");      
 		}
 	}

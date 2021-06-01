@@ -26,6 +26,7 @@ public class LevelIO
     }
     
     public boolean load(final Level level, final InputStream in) {
+    	System.out.println("Save file exists, loading.");
         this.levelLoaderListener.beginLevelLoading("Loading level");
         this.levelLoaderListener.levelLoadUpdate("Reading..");
         try {
@@ -53,8 +54,7 @@ public class LevelIO
             level.name = name;
             level.creator = creator;
             level.createTime = createTime;
-            System.out.println("Level Loaded");
-            System.out.println(level.name);
+            System.out.println(level.name + " by " + level.creator + ". ");
             Minecraft.nameLevel = level.name;
             return true;
         }
@@ -66,7 +66,8 @@ public class LevelIO
     }
     
     public boolean loadLegacy(final Level level, final InputStream in) {
-        this.levelLoaderListener.beginLevelLoading("Loading level");
+    	System.out.println("Save file does exist, but it's in a legacy pre-classic format, loading with alternative function.");
+        this.levelLoaderListener.beginLevelLoading("Loading legacy level");
         this.levelLoaderListener.levelLoadUpdate("Reading..");
         try {
             final DataInputStream dis = new DataInputStream(new GZIPInputStream(in));
@@ -105,6 +106,7 @@ public class LevelIO
             dos.writeShort(level.depth);
             dos.write(level.blocks);
             dos.close();
+			System.out.println("Saved.");
         }
         catch (Exception e) {
             e.printStackTrace();
