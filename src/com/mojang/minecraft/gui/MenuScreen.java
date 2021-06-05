@@ -68,8 +68,9 @@ public class MenuScreen extends Screen
     
     @Override
     public void render(final int xm, final int ym) {
-    	this.fillGradient(0, 0, this.width, this.height, 537199872, -1607454624);
-    	this.drawString("Welcome to Gamerappa's Minecraft!", this.width / 2 / 2, 30, 3394560);
+    	this.fill(0, 0, this.width, this.height, 869007615);
+    	//how the actual fuck does java handle colors? how can it be semi-transparent pink and not weird proper green
+    	this.drawCenteredString("Gamerappa's Minecraft", this.width / 2 / 2, 30, 339456050);
     	this.drawString("This is version " + Minecraft.VERSION_STRING, this.width / 2 / 2, 40, 3394560);
         for (int i = 0; i < this.buttons.size(); ++i) {
             final Button button = this.buttons.get(i);
