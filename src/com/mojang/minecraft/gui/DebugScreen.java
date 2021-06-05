@@ -16,13 +16,13 @@ import com.mojang.minecraft.gui.Screen;
 import com.mojang.minecraft.gui.Font;
 import com.mojang.minecraft.level.LevelIO;
 
-public class MenuScreen extends Screen
+public class DebugScreen extends Screen
 {
 	public Font font;
     private List<Button> buttons;
     public Textures textures;
     
-    public MenuScreen() {
+    public DebugScreen() {
         this.buttons = new ArrayList<Button>();
     }
     

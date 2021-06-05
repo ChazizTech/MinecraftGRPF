@@ -164,14 +164,10 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.checkGlError("Startup");
 		System.out.println("Startup");
 		this.font = new Font("/default.gif", this.textures);
+		GL11.glViewport(0, 0, this.width, this.height);
+		this.setScreen(new MenuScreen()); //bad menu
 		final IntBuffer imgData = BufferUtils.createIntBuffer(256);
 		imgData.clear().limit(256);
-		GL11.glViewport(0, 0, this.width, this.height);
-		try {
-			this.setScreen(new MenuScreen());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		Minecraft.level = new Level();
 		System.out.println("Initalizing level.");
 		boolean success = false;
@@ -241,7 +237,6 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 	}
 
 	public void destroy() {
-		this.attemptSaveLevel();
 		Mouse.destroy();
 		Keyboard.destroy();
 		Display.destroy();
@@ -268,8 +263,26 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		}
 		this.setScreen(null);
 	}
-
+	
 	public void releaseMouse() {
+		if (!this.mouseGrabbed) {
+			return;
+		}
+		this.player.releaseAllKeys();
+		this.mouseGrabbed = false;
+		if (this.appletMode) {
+			try {
+				Mouse.setNativeCursor((Cursor) null);
+			} catch (LWJGLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			Mouse.setGrabbed(false);
+		}
+	}
+	
+	public void pause() {
+		// why. 6/5/21
 		if (!this.mouseGrabbed) {
 			return;
 		}
@@ -352,8 +365,12 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 						Keyboard.getEventKeyState());
 				if (Keyboard.getEventKeyState()) {
 					if (Keyboard.getEventKey() == 1) {
-						this.releaseMouse();
+						this.pause(); //bad implementation but for some reason it kept spam-saving
 					} // refer to tile.java to find tile ID.
+					if (Keyboard.getEventKey() == Keyboard.KEY_END) {
+						this.releaseMouse();
+						this.setScreen(new MenuScreen()); //bad menu
+					}
 					if (Keyboard.getEventKey() == 28) {
 						this.attemptSaveLevel();
 					}
@@ -486,7 +503,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 
 	public void render(final float a) {
 		if (!Display.isActive()) {
-			this.releaseMouse();
+			this.pause();
 		}
 		GL11.glViewport(0, 0, this.width, this.height);
 		if (this.mouseGrabbed) {
@@ -530,12 +547,12 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		this.setupFog(1);
 		this.levelRenderer.clouds(a);
 		this.levelRenderer.render(this.player, 1);
-	//		for (int i = 0; i < this.entities.size(); ++i) {
-	//			final Entity zombie = this.entities.get(i);
-	//			if (!zombie.isLit() && frustum.isVisible(zombie.bb)) {
-	//				this.entities.get(i).render(a);
-	//			}
-	//		}
+			for (int i = 0; i < this.entities.size(); ++i) {
+				final Entity zombie = this.entities.get(i);
+				if (!zombie.isLit() && frustum.isVisible(zombie.bb)) {
+					this.entities.get(i).render(a);
+				}
+			}
 		this.particleEngine.render(this.player, a, 1);
 		this.levelRenderer.renderSurroundingGround();
 		if (this.hitResult != null) {
@@ -585,7 +602,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 					"Failed to start Gamerappa's Minecraft", 0);
 			return;
 		}
-		long lastTime = System.currentTimeMillis();
+				long lastTime = System.currentTimeMillis();
 		int frames = 0;
 		try {
 			while (this.running) {
