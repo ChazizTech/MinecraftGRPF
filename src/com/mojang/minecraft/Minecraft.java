@@ -167,7 +167,11 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		final IntBuffer imgData = BufferUtils.createIntBuffer(256);
 		imgData.clear().limit(256);
 		GL11.glViewport(0, 0, this.width, this.height);
-		//this.setScreen(new MenuScreen());
+		try {
+			this.setScreen(new MenuScreen());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Minecraft.level = new Level();
 		System.out.println("Initalizing level.");
 		boolean success = false;
@@ -360,7 +364,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 					if (Keyboard.getEventKey() == Keyboard.KEY_PERIOD) {
 						if (this.paintTexture != 36) // prevents game from
 														// crashing if user goes
-														// above the last
+														// beyond the last
 														// available block.
 							this.paintTexture += 1;
 						this.paintTextureString = ("Block Selected: " + this.paintTexture);
@@ -578,7 +582,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e.toString(),
-					"Failed to start MinecraftGRPF", 0);
+					"Failed to start Gamerappa's Minecraft", 0);
 			return;
 		}
 		long lastTime = System.currentTimeMillis();
@@ -633,7 +637,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		GL11.glTranslatef(0.0f, 0.0f, -200.0f);
 		this.checkGlError("GUI: Init");
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float) (screenWidth - 16), 16.0f, -50.0f);
+		GL11.glTranslatef((float) (screenWidth - 16), (screenHeight - 16), -50.0f);
 		final Tesselator t = Tesselator.instance;
 		GL11.glScalef(16.0f, 16.0f, 16.0f);
 		GL11.glRotatef(-30.0f, 1.0f, 0.0f, 0.0f);
@@ -644,16 +648,18 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		GL11.glBindTexture(3553, id);
 		GL11.glEnable(3553);
 		t.begin();
+		//this is the block preview used for the HUD
 		Tile.tiles[this.paintTexture].render(t, Minecraft.level, 0, -2, 0, 0);
 		t.end();
 		GL11.glDisable(3553);
 		GL11.glPopMatrix();
 		this.checkGlError("GUI: Draw selected");
-		// For some random reason, the text color uses BGR and not RGB.
+		// For some random reason, the text color uses BGR and not RGB. (or not??????????????)
 		// We should add a text color system later, in case we actually
 		// implement multiplayer. -Chaziz 5/31/2021
-		this.font.drawShadow(VERSION_STRING + " - " + this.fpsString, 2, 2, 16777215);
-		this.font.drawShadow(this.paintTextureString, 2, 12, 13948116);
+		this.font.drawShadow("Gamerappa's Minecraft", 2, 2, 3394560); //green text
+		this.font.drawShadow(VERSION_STRING + " - " + this.fpsString, 120, 2, 16777215);
+		this.font.drawShadow(this.paintTextureString, 2, 202, 13948116); //gray text
 		this.font.drawShadow("User: " + User.name, 2, 212, 16764165); //yellow text
 		this.font.drawShadow("Level: " + Minecraft.nameLevel, 2, 222, 11528191); //blue text
 		this.checkGlError("GUI: Draw text");

@@ -23,17 +23,22 @@ public class MinecraftServer implements Runnable, ServerListener
         this.clientMap = new HashMap<SocketConnection, Client>();
         this.clients = new ArrayList<Client>();
         this.socketServer = new SocketServer(ips, port, this);
+        System.out.println("Gamerappa's Minecraft Server");
+        System.out.println(ips);
+        System.out.println(port);
     }
     
     public void clientConnected(final SocketConnection serverConnection) {
         final Client client = new Client(this, serverConnection);
         this.clientMap.put(serverConnection, client);
         this.clients.add(client);
+        System.out.println("Server - Connection");
     }
     
     public void disconnect(final Client client) {
         this.clientMap.remove(client.serverConnection);
         this.clients.remove(client);
+        System.out.println("Server - Disconnection");
     }
     
     public void clientException(final SocketConnection serverConnection, final Exception e) {
@@ -42,6 +47,7 @@ public class MinecraftServer implements Runnable, ServerListener
     }
     
     public void run() {
+    	System.out.println("Running");
         while (true) {
             this.tick();
             try {
@@ -61,6 +67,7 @@ public class MinecraftServer implements Runnable, ServerListener
     }
     
     public static void main(final String[] args) throws IOException {
+    	System.out.println("Initializing");
         final MinecraftServer server = new MinecraftServer(new byte[] { 127, 0, 0, 1 }, 20801);
         final Thread thread = new Thread(server);
         thread.start();

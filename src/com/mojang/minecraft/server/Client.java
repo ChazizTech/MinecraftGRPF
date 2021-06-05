@@ -16,6 +16,7 @@ public class Client implements ConnectionListener
     public Client(final MinecraftServer server, final SocketConnection serverConnection) {
         this.server = server;
         (this.serverConnection = serverConnection).setConnectionListener(this);
+        System.out.println("Connection");
     }
     
     public void command(final byte cmd, final int remaining, final ByteBuffer in) {
@@ -27,5 +28,6 @@ public class Client implements ConnectionListener
     
     public void disconnect() {
         this.server.disconnect(this);
+        System.out.println("Disconnection");
     }
 }

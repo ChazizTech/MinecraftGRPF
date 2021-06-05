@@ -86,9 +86,9 @@ public class Player extends Entity
             final float yo = this.y;
             this.moveRelative(xa, ya, 0.02f);
             this.move(this.xd, this.yd, this.zd);
-            this.xd *= 0.8f;
-            this.yd *= 0.8f;
-            this.zd *= 0.8f;
+            this.xd *= 0.825f;
+            this.yd *= 0.825f;
+            this.zd *= 0.825f;
             this.yd -= (float)0.02;
             if (this.horizontalCollision && this.isFree(this.xd, this.yd + 0.6f - this.y + yo, this.zd)) {
                 this.yd = 0.3f;
@@ -98,9 +98,9 @@ public class Player extends Entity
             final float yo = this.y;
             this.moveRelative(xa, ya, 0.02f);
             this.move(this.xd, this.yd, this.zd);
-            this.xd *= 0.5f;
-            this.yd *= 0.5f;
-            this.zd *= 0.5f;
+            this.xd *= 0.65f;
+            this.yd *= 0.65f;
+            this.zd *= 0.65f;
             this.yd -= (float)0.02;
             if (this.horizontalCollision && this.isFree(this.xd, this.yd + 0.6f - this.y + yo, this.zd)) {
                 this.yd = 0.3f;
