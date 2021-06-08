@@ -11,6 +11,7 @@ import com.mojang.minecraft.renderer.Tesselator;
 import com.mojang.minecraft.renderer.Frustum;
 import com.mojang.minecraft.phys.AABB;
 import com.mojang.minecraft.level.tile.Tile;
+import com.mojang.minecraft.gui.DebugScreen;
 import com.mojang.minecraft.gui.PauseScreen;
 import com.mojang.minecraft.gui.MenuScreen;
 import com.mojang.minecraft.level.Chunk;
@@ -369,7 +370,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 					} // refer to tile.java to find tile ID.
 					if (Keyboard.getEventKey() == Keyboard.KEY_END) {
 						this.releaseMouse();
-						this.setScreen(new MenuScreen()); //bad menu
+						this.setScreen(new DebugScreen()); //bad menu
 					}
 					if (Keyboard.getEventKey() == 28) {
 						this.attemptSaveLevel();
@@ -654,6 +655,7 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		GL11.glTranslatef(0.0f, 0.0f, -200.0f);
 		this.checkGlError("GUI: Init");
 		GL11.glPushMatrix();
+		//location of block preview?
 		GL11.glTranslatef((float) (screenWidth - 16), (screenHeight - 16), -50.0f);
 		final Tesselator t = Tesselator.instance;
 		GL11.glScalef(16.0f, 16.0f, 16.0f);
@@ -794,8 +796,8 @@ public class Minecraft implements Runnable, LevelLoaderListener {
 		JFrame f;
 		public inputLevelName(){  
 		    f=new JFrame();
-			System.out.println("A dialog asking for the level name should have opened.");
-		    nameLevel=JOptionPane.showInputDialog(f,"Enter name for level.");      
+			System.out.println("A dialog asking for the level name should open.");
+		    nameLevel=JOptionPane.showInputDialog(f,"Please input the name for the level.");      
 		}
 	}
 	
